@@ -9,8 +9,11 @@ namespace RT_ISICG
 		const int imgWidth	= 600;
 		const int imgHeight = 400;
 
-		Vec3f p_position = Vec3f( 0.f, 1.f, 4.f );
-		Vec3f p_lookat	 = Vec3f( 1.f, 0.f, 1.f );
+		//Vec3f p_position = Vec3f( 0.f, 1.f, 4.f );
+		//Vec3f p_lookat	 = Vec3f( 1.f, 0.f, 1.f );
+
+		Vec3f p_position = Vec3f( 0.f, 0.f, -2.f );
+		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 80.f );
 		Vec3f p_up		 = Vec3f( 0, 1, 0 );
 		float fov		 = 60.f;
 		// Create a texture to render the scene.

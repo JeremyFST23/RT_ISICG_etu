@@ -4,7 +4,6 @@
 #include "defines.hpp"
 #include "lights/base_light.hpp"
 #include "objects/base_object.hpp"
-#include "objects/plane.hpp"
 #include <exception>
 #include <map>
 #include <vector>
