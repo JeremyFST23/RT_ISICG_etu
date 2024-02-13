@@ -36,6 +36,37 @@ namespace RT_ISICG
 
 		// Link objects and materials.
 		_attachMaterialToObject( "Blue", "Sphere1" );
+
+		// Add material plan rouge
+	}
+
+	void Scene::initTp1() {
+		// Add objects.
+		_addObject( new Sphere( "Sphere1", Vec3f( 0.f, 0.f, 3.f ), 1.f ) );
+
+		// Add materials.
+		_addMaterial( new ColorMaterial( "Blue", BLUE ) );
+
+		// Link objects and materials.
+		_attachMaterialToObject( "Blue", "Sphere1" );
+
+		// Add material plan rouge
+	}
+
+	void Scene::initTp2() {
+		// Add object sphere.
+		_addObject( new Sphere( "Sphere1", Vec3f( 0.f, 0.f, 3.f ), 1.f ) );
+		_addObject( new Plane("Plane1",Vec3f(0.f,-2.f,0.f),Vec3f(0.f,1.f,0.f)));
+		// Add material sphere.
+		_addMaterial( new ColorMaterial( "Blue", BLUE ) );
+
+		// Add material plane
+		_addMaterial(new ColorMaterial( "Red",RED));
+		// Link objects and materials.
+		_attachMaterialToObject( "Blue", "Sphere1" );
+
+		// Add material plan rouge
+	}
 	}
 
 	void Scene::loadFileTriangleMesh( const std::string & p_name, const std::string & p_path )

@@ -20,9 +20,7 @@ namespace RT_ISICG
 
 		inline Vec3f computeNormal( const Vec3f & p_point ) const //calcule la normale de la sphere a un point p
 		{
-			/// TODO !
 			Vec3f normal = glm::normalize(p_point - _center);
-		
 			//return Vec3f( 1.f );
 			return normal;
 		}
