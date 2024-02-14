@@ -1,5 +1,6 @@
 #include "renderer.hpp"
 #include "integrators/ray_cast_integrator.hpp"
+#include "integrators/Direct_Lighting_Integrator.hpp"
 #include "utils/console_progress_bar.hpp"
 #include "utils/random.hpp"
 
@@ -13,6 +14,7 @@ namespace RT_ISICG
 
 		switch ( p_integratorType )
 		{
+		case IntegratorType::DIRECT_LIGHTING: _integrator = new DirectLightingIntegrator(); break;
 		case IntegratorType::RAY_CAST:
 		default:
 		{
@@ -59,9 +61,9 @@ namespace RT_ISICG
 					 Ray   ray	= p_camera->generateRay( p_sx, p_sy );
 					 // p_texture.setPixel( i, j, (ray.getDirection() + 1.f) * 0.5f );
 					 color += _integrator->Li( p_scene, ray, 0.f, 1000.f );	
-					 /// TODO !
 				}
 				color /= _nbPixelSamples;
+				color = glm::clamp( color, 0.f, 1.f );//va mettre nos couleurs entre 0 et 1
 				p_texture.setPixel( i, j, color );
 				
 			}

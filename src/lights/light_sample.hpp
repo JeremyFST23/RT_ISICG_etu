@@ -17,6 +17,7 @@ namespace RT_ISICG
 		float _distance	 = 0.f;
 		Vec3f _radiance	 = WHITE; // radiance at given point divided by pdf
 		float _pdf		 = 1.f;
+		
 	};
 
 } // namespace RT_ISICG

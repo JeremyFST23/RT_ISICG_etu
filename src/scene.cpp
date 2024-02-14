@@ -28,7 +28,7 @@ namespace RT_ISICG
 	}
 
 	void Scene::init() { 
-		initTp2();
+		initTp2_3();
 	}
 
 	void Scene::initTp1() {
@@ -55,10 +55,24 @@ namespace RT_ISICG
 		_addMaterial(new ColorMaterial( "Red",RED));
 		// Link objects and materials.
 		_attachMaterialToObject( "Blue", "Sphere1" );
-		_attachMaterialToObject( "Red", "Plane1" );
+		_attachMaterialToObject( "Red", "Plane1" );	
+	}
 
-		// Add material plan rouge
-	
+	void Scene::initTp2_3() {
+		// Add object sphere.
+		_addObject( new Sphere( "Sphere1", Vec3f( 0.f, 0.f, 3.f ), 1.f ) );
+		_addObject( new Plane( "Plane1", Vec3f( 0.f, -2.f, 0.f ), Vec3f( 0.f, 1.f, 0.f ) ) );
+		// Add material sphere.
+		_addMaterial( new ColorMaterial( "Blue", BLUE ) );
+
+		// Add material plane
+		_addMaterial( new ColorMaterial( "Red", RED ) );
+		// Link objects and materials.
+		_attachMaterialToObject( "Blue", "Sphere1" );
+		_attachMaterialToObject( "Red", "Plane1" );
+		
+		//Add ponctual light
+		_addLight(new PointLight(Vec3f(1,10,1),WHITE,100.f));
 	}
 
 	void Scene::loadFileTriangleMesh( const std::string & p_name, const std::string & p_path )

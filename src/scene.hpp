@@ -4,6 +4,7 @@
 #include "defines.hpp"
 #include "lights/base_light.hpp"
 #include "objects/base_object.hpp"
+#include "lights/PointLight.hpp"
 #include <exception>
 #include <map>
 #include <vector>
@@ -44,6 +45,7 @@ namespace RT_ISICG
 		void _attachMaterialToObject( const std::string & p_materialName, const std::string & p_objectName );
 		void initTp1();
 		void initTp2();
+		void initTp2_3();
 
 	  private:
 		ObjectMap	_objectMap;
