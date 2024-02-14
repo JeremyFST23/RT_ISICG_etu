@@ -44,7 +44,7 @@ namespace RT_ISICG
 		// Add material plan rouge
 	}
 
-	void Scene::initTp2() {
+	void Scene::initTp2_1() {
 		// Add object sphere.
 		_addObject( new Sphere( "Sphere1", Vec3f( 0.f, 0.f, 3.f ), 1.f ) );
 		_addObject( new Plane("Plane1",Vec3f(0.f,-2.f,0.f),Vec3f(0.f,1.f,0.f)));

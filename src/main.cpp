@@ -28,6 +28,7 @@ namespace RT_ISICG
 		PerspectiveCamera camera( p_position, p_lookat, p_up, fov, float( imgWidth ) / imgHeight );
 		// Create and setup the renderer.
 		Renderer renderer;
+		//renderer.setIntegrator( IntegratorType::RAY_CAST ); //Pour le tp2_1 on utilise ray cast
 		renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
 		renderer.setBackgroundColor( GREY );
 		renderer.setNbPixelSamples( 32 );
