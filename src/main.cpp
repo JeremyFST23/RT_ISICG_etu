@@ -12,7 +12,8 @@ namespace RT_ISICG
 		//Vec3f p_position = Vec3f( 0.f, 1.f, 4.f );
 		//Vec3f p_lookat	 = Vec3f( 1.f, 0.f, 1.f );
 
-		Vec3f p_position = Vec3f( 0.f, 0.f, -2.f );
+		//Vec3f p_position = Vec3f( 0.f, 0.f, -2.f );//Tp3
+		Vec3f p_position = Vec3f( 0.f, 2.f, -6.f );//Tp4
 		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 80.f );
 		Vec3f p_up		 = Vec3f( 0, 1, 0 );
 		float fov		 = 60.f;
@@ -31,7 +32,7 @@ namespace RT_ISICG
 		//renderer.setIntegrator( IntegratorType::RAY_CAST ); //Pour le tp2_1 on utilise ray cast
 		renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
 		renderer.setBackgroundColor( GREY );
-		renderer.setNbPixelSamples( 32 );
+		renderer.setNbPixelSamples( 1 );
 
 		// Launch rendering.
 		std::cout << "Rendering..." << std::endl;

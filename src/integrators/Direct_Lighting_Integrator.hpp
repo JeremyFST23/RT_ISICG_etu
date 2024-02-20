@@ -21,6 +21,7 @@ namespace RT_ISICG
 										   const Ray &	 p_ray,
 										   const float	 p_tMin,
 										   const HitRecord & p_hitRecord ) const;
+		    int			_nbLightSamples = 32;
 
 
 	};

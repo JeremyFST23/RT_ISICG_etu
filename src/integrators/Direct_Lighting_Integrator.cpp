@@ -13,14 +13,19 @@ namespace RT_ISICG
 			Ray			rayShadow( p_hitRecord._point, ls._direction );
 			rayShadow.offset( p_hitRecord._normal );//enlever auto intersection
 			bool		isShadow = p_scene.intersectAny( rayShadow, p_tMin, ls._distance );	//intersection pour l'ombre
-			if (!isShadow) {
-				float theta
-					= glm::dot( p_hitRecord._normal, ls._direction ); // angle entre normal et direction du rayon
-				float maxAngle = glm::max( theta, 0.f );			  // max entre 0 et cos theta
-				colorF
-					+= p_hitRecord._object->getMaterial()->getFlatColor() * ls._radiance * maxAngle; // luminance finale
+			if (light->getIsSurface()) {
+				for ( int i = 0; i < _nbLightSamples; i++ ) {
+					if ( !isShadow )
+					{
+						float theta	   = glm::dot( p_hitRecord._normal,
+												   ls._direction ); // angle entre normal et direction du rayon
+						float maxAngle = glm::max( theta, 0.f );	// max entre 0 et cos theta
+						colorF += p_hitRecord._object->getMaterial()->getFlatColor() * ls._radiance
+								  * maxAngle; // luminance finale
+					}
+				}
+				colorF /= _nbLightSamples;//moyenne contribution lumineuse
 			}
-			
 		}
 		return colorF;
 		

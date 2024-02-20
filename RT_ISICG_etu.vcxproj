@@ -159,6 +159,7 @@ xcopy /y /d  "$(ProjectDir)lib\zlib1.dll" "$(OutDir)"</Command>
     <ClCompile Include="src\geometry\planeGeometry.cpp" />
     <ClCompile Include="src\integrators\Direct_Lighting_Integrator.cpp" />
     <ClCompile Include="src\lights\PointLight.cpp" />
+    <ClCompile Include="src\lights\Quad_Light.cpp" />
     <ClCompile Include="src\objects\plane.cpp" />
     <ClCompile Include="src\geometry\sphere_geometry.cpp" />
     <ClCompile Include="src\geometry\triangle_mesh_geometry.cpp" />

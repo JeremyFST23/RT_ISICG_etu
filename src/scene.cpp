@@ -28,7 +28,8 @@ namespace RT_ISICG
 	}
 
 	void Scene::init() { 
-		initTp2_3();
+		//initTp3_2();
+		initTp4();
 	}
 
 	void Scene::initTp1() {
@@ -73,6 +74,62 @@ namespace RT_ISICG
 		
 		//Add ponctual light
 		_addLight(new PointLight(Vec3f(1,10,1),WHITE,100.f));
+	}
+
+	void Scene::initTp3_2()
+	{ // scene pour le tp3_2
+		// Add object sphere.
+		_addObject( new Sphere( "Sphere1", Vec3f( 0.f, 0.f, 3.f ), 1.f ) );
+		_addObject( new Plane( "Plane1", Vec3f( 0.f, -2.f, 0.f ), Vec3f( 0.f, 1.f, 0.f ) ) );
+		// Add material sphere.
+		_addMaterial( new ColorMaterial( "Blue", BLUE ) );
+
+		// Add material plane
+		_addMaterial( new ColorMaterial( "Red", RED ) );
+		// Link objects and materials.
+		_attachMaterialToObject( "Blue", "Sphere1" );
+		_attachMaterialToObject( "Red", "Plane1" );
+
+		// Add ponctual light
+		_addLight( new QuadLight( Vec3f( 1, 10, 2 ), Vec3f( -2, 0, 0 ), Vec3f( 0.f, 0.f, 2.f ), WHITE, 40 ) );
+	}
+
+	void Scene::initTp4()
+	{
+		// ================================================================
+		// Add materials .
+		// ================================================================
+		_addMaterial( new ColorMaterial( "RedColor", RED ) );
+		_addMaterial( new ColorMaterial( "GreenColor", GREEN ) );
+		_addMaterial( new ColorMaterial( "BlueColor", BLUE ) );
+		_addMaterial( new ColorMaterial( "GreyColor", GREY ) );
+		_addMaterial( new ColorMaterial( "MagentaColor", MAGENTA ) );
+		_addMaterial( new ColorMaterial( "YellowColor", YELLOW ) );
+		_addMaterial( new ColorMaterial( "CyanColor", CYAN ) );
+		// ================================================================
+		// Add objects .
+		// ================================================================
+		// OBJ.
+		const std::string Data_Path = "../rt_isicg_2023-main/data/";
+		loadFileTriangleMesh( "UVsphere",Data_Path+"uvsphere.obj");
+		_attachMaterialToObject( "CyanColor", "UVsphere_defaultobject" );
+		// Pseudo Cornell box made with infinite planes .
+		_addObject( new Plane("PlaneGround",Vec3f(0.f, -3.f, 0.f), Vec3f( 0.f, 1.f, 0.f ) ) );
+		_attachMaterialToObject( "GreyColor", "PlaneGround" );
+		_addObject( new Plane("PlaneLeft", Vec3f( 5.f, 0.f, 0.f ), Vec3f( -1.f, 0.f, 0.f ) ) );
+		_attachMaterialToObject("RedColor", "PlaneLeft" );
+		_addObject( new Plane("PlaneCeiling", Vec3f( 0.f, 7.f, 0.f ), Vec3f( 0.f, -1.f, 0.f ) ) );
+		_attachMaterialToObject("GreenColor", "PlaneCeiling" );
+		_addObject( new Plane( "PlaneRight", Vec3f( -5.f, 0.f, 0.f ), Vec3f( 1.f, 0.f, 0.f ) ) );
+		_attachMaterialToObject( "BlueColor", "PlaneRight" );
+		_addObject( new Plane( "PlaneFront", Vec3f( 0.f, 0.f, 10.f ), Vec3f( 0.f, 0.f, -1.f ) ) );
+		_attachMaterialToObject( "MagentaColor", "PlaneFront" );
+		_addObject( new Plane( "PlaneRear", Vec3f( 0.f, 0.f, -10.f ), Vec3f( 0.f, 0.f, 1.f ) ) );
+		_attachMaterialToObject( "YellowColor", "PlaneRear" );
+		// ================================================================
+		// Add lights .
+		// ================================================================
+		_addLight( new PointLight( Vec3f( 0.f, 3.f, -5.f ), WHITE, 100.f ) );
 	}
 
 	void Scene::loadFileTriangleMesh( const std::string & p_name, const std::string & p_path )

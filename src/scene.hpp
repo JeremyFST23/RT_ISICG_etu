@@ -5,6 +5,7 @@
 #include "lights/base_light.hpp"
 #include "objects/base_object.hpp"
 #include "lights/PointLight.hpp"
+#include "lights/Quad_Light.hpp"
 #include <exception>
 #include <map>
 #include <vector>
@@ -46,6 +47,8 @@ namespace RT_ISICG
 		void initTp1();
 		void initTp2_1();
 		void initTp2_3();
+		void initTp3_2();
+		void initTp4();
 
 	  private:
 		ObjectMap	_objectMap;
