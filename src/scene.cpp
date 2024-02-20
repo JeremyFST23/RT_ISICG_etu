@@ -111,7 +111,7 @@ namespace RT_ISICG
 		// ================================================================
 		// OBJ.
 		const std::string Data_Path = "../rt_isicg_2023-main/data/";
-		loadFileTriangleMesh( "UVsphere",Data_Path+"uvsphere.obj");
+		loadFileTriangleMesh( "UVsphere",Data_Path+"Bunny.obj");
 		_attachMaterialToObject( "CyanColor", "UVsphere_defaultobject" );
 		// Pseudo Cornell box made with infinite planes .
 		_addObject( new Plane("PlaneGround",Vec3f(0.f, -3.f, 0.f), Vec3f( 0.f, 1.f, 0.f ) ) );

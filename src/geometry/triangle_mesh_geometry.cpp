@@ -13,7 +13,13 @@ namespace RT_ISICG
 												  _refMesh->_vertices[ p_v2 ] - _refMesh->_vertices[ p_v0 ] ) );
 	}
 
-	bool TriangleMeshGeometry::intersect( const Ray & p_ray, float & p_t ) const
+	Vec3f & TriangleMeshGeometry::getNormal(const float & p_u, const float & p_v) const { 
+		Vec3f n = ( ( 1 - p_u - p_v ) * _refMesh->_normals[ _v0 ] ) + ( p_u * _refMesh->_normals[ _v1 ] )
+				  + ( p_v * _refMesh->_normals[ _v2 ] );
+		return n;
+	}
+
+	bool TriangleMeshGeometry::intersect( const Ray & p_ray, float & p_t, float & p_u,float & p_v) const
 	{
 		const Vec3f & o	 = p_ray.getOrigin();
 		const Vec3f & d	 = p_ray.getDirection();
@@ -22,6 +28,7 @@ namespace RT_ISICG
 		const Vec3f & v2 = _refMesh->_vertices[ _v2 ];
 
 		/// TODO
+		Vec3f			n				= VEC3F_ZERO;
 		constexpr float epsilon			= std::numeric_limits<float>::epsilon();
 		Vec3f edge1 = v1 - v0;
 		Vec3f edge2 = v2 - v0;
@@ -34,23 +41,22 @@ namespace RT_ISICG
 
 		float inv_det = 1 / det;
 		Vec3f s		  = o - v0;
-		float u		  = inv_det * glm::dot( s, ray_cross_edge2 );
+		p_u		  = inv_det * glm::dot( s, ray_cross_edge2 );
 
-		if (u < 0 || u > 1) { 
+		if (p_u < 0 || p_u > 1) { 
 			return false;
 		}
 
 		Vec3f s_cross_edge1 = glm::cross( s, edge1 );
-		float v				= inv_det * glm::dot( d, s_cross_edge1 );
-
-		if (v < 0 || u + v > 1) { 
+		p_v				= inv_det * glm::dot( d, s_cross_edge1 );
+		if (p_v < 0 || p_u + p_v > 1) { 
 			return false;
 		}
 
 		p_t = inv_det * glm::dot( edge2, s_cross_edge1 );
 
 		if (p_t > epsilon) {
-			Vec3f out_intersection_Point = o + d * p_t;
+			//Vec3f out_intersection_Point = o + d * p_t;
 			return true;
 		}
 		else { 
