@@ -24,11 +24,13 @@ namespace RT_ISICG
 
 	void PerspectiveCamera::_updateViewport()
 	{
+		//TP1 Caméra, rayons et projection perspective
 		float viewPortHeight   = 2.f *  tan( glm::radians( _fovy / 2.f ) ) * _focalDistance;
 		float viewPortWidth	   = viewPortHeight * _aspectRatio;
 		_viewportV			   = _v * viewPortHeight;
 		_viewportU			   = _u * viewPortWidth;
 		_viewportTopLeftCorner = _position - (_w * _focalDistance) + (_viewportV/2.f) - (_viewportU/2.f);
+		//TP1 Caméra, rayons et projection perspective
 	}
 
 } // namespace RT_ISICG
