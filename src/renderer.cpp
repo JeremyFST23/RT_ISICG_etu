@@ -43,9 +43,11 @@ namespace RT_ISICG
 
 		progressBar.start( height, 50 );
 		chrono.start();
+		//TP1
 		float red = 0;
 		float blue = 0;
 		float green = 0;
+		//TP1
 		#pragma omp parallel for
 		for ( int j = 0; j < height; j++ )
 		{
@@ -54,13 +56,23 @@ namespace RT_ISICG
 				Vec3f color = Vec3f( 0.f, 0.f, 0.f );
 				 for ( int k = 0; k < _nbPixelSamples; k++ )
 				{
+					//TP1 Premiere image
 					 /*red = (float)i / ( width - 1 );
 					green = (float)j / (height - 1);
 					p_texture.setPixel( i, j, Vec3f( red, green, blue ) );*/
+					//TP1 Premiere image
+					
+					//TP1 Caméra, rayons et projection perspective
+					 /*float p_sx = (float)(i + randomFloat()) / ( width - 1 );
+					 float p_sy = (float)(j + randomFloat())/ ( height - 1 );
+      					 Ray   ray	= p_camera->generateRay( p_sx, p_sy );
+					 p_texture.setPixel( i, j, (ray.getDirection() + 1.f) * 0.5f );*/
+					//TP1 Caméra, rayons et projection perspective
+					
 					 float p_sx = (float)(i + randomFloat()) / ( width - 1 );
 					 float p_sy = (float)(j + randomFloat())/ ( height - 1 );
 					 Ray   ray	= p_camera->generateRay( p_sx, p_sy );
-					 // p_texture.setPixel( i, j, (ray.getDirection() + 1.f) * 0.5f );
+					 //
 					 color += _integrator->Li( p_scene, ray, 0.f, 1000.f );	
 				}
 				color /= _nbPixelSamples;
