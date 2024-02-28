@@ -15,10 +15,11 @@ namespace RT_ISICG
 										  const float	p_aspectRatio )
 		: BaseCamera( p_position ), _fovy( p_fovy ), _aspectRatio( p_aspectRatio )
 	{
-		/// TODO ! _u ? _v ? _w ?
-		_w = glm::normalize( -p_lookAt + p_position );
-		_u = glm::normalize(glm::cross(p_up,_w));//produit vectorielle 
-		_v = glm::normalize(glm::cross(_w,_u));
+		//TP1 Une caméra positionnable
+		_w = glm::normalize( -p_lookAt + p_position );//on calcule w avec l'inverse de la direction d'observation
+		_u = glm::normalize(glm::cross(p_up,_w));//produit vectorielle entre notre direction d'observation et la rotation de de la caméra
+		_v = glm::normalize(glm::cross(_w,_u));//produit vectorielle entre notre axe u et notre axe w
+		//TP1 Une caméra positionnable 
 		_updateViewport();
 	}
 
