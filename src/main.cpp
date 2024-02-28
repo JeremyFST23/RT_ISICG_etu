@@ -8,7 +8,22 @@ namespace RT_ISICG
 	{
 		const int imgWidth	= 600;
 		const int imgHeight = 400;
-
+		//Tp1 Une caméra positionnable a)
+		/* Vec3f p_position = Vec3f(0.f,0.f,-2.f);
+		Vec3f p_lookat = Vec3f(0.f,0.f,79.f);
+		*/
+		//Tp1 Une caméra positionnable b)
+		/* Vec3f p_position = Vec3f(1.f,0.f,0.f);
+		Vec3f p_lookat = Vec3f(1.f,0.f,1.f);
+		*/
+		//Tp1 Une caméra positionnable c)
+		/* Vec3f p_position = Vec3f(0.f,1.f,0.f);
+		Vec3f p_lookat = Vec3f(0.f,1.f,1.f);
+		*/
+		//Tp1 Une caméra positionnable d)
+		/* Vec3f p_position = Vec3f(4.f,-1.f,0.f);
+		Vec3f p_lookat = Vec3f(-1.f,-1.f,2.f);
+		*/
 		//Vec3f p_position = Vec3f( 0.f, 1.f, 4.f );
 		//Vec3f p_lookat	 = Vec3f( 1.f, 0.f, 1.f );
 
@@ -32,8 +47,9 @@ namespace RT_ISICG
 		//renderer.setIntegrator( IntegratorType::RAY_CAST ); //Pour le tp2_1 on utilise ray cast
 		renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
 		renderer.setBackgroundColor( GREY );
+		//Tp1 antialiasing
 		renderer.setNbPixelSamples( 1 );
-
+		//Tp1 antialiasing
 		// Launch rendering.
 		std::cout << "Rendering..." << std::endl;
 		std::cout << "- Image size: " << imgWidth << "x" << imgHeight << std::endl;
