@@ -20,9 +20,11 @@ namespace RT_ISICG
 
 		inline Ray generateRay( const float p_sx, const float p_sy ) const override
 		{
+			//TP1 Caméra, rayons et projection perspective
 			Vec3f posViewPort = _viewportTopLeftCorner  + (_viewportU * p_sx) - (_viewportV * p_sy);
 			Vec3f dirRay	  = glm::normalize(   posViewPort - _position );
 			return Ray( _position, dirRay );
+			//TP1 Caméra, rayons et projection perspective
 		}
 
 	  private:
