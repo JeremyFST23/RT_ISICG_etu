@@ -10,7 +10,7 @@ namespace RT_ISICG
 		HitRecord hitRecord;
 		if ( p_scene.intersect( p_ray, p_tMin, p_tMax, hitRecord ) )
 		{
-			/// TODO ! cos theta...
+			//TP1 Votre premier objet : une sphère
 			float theta = glm::dot( hitRecord._normal, -p_ray.getDirection() ); // angle entre normal et direction du rayon
 			float maxAngle = glm::max( theta, 0.f ); // max entre 0 et cos theta
 			return hitRecord._object->getMaterial()->getFlatColor() * maxAngle;
