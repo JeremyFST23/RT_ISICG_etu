@@ -26,7 +26,7 @@ namespace RT_ISICG
 			LightSample ls = light->sample( p_hitRecord._point );
 			Ray			rayShadow( p_hitRecord._point, ls._direction );
 			rayShadow.offset( p_hitRecord._normal );//enlever auto intersection
-   			//bool isShadow = p_scene.intersect( rayShadow, p_tMin, p_tMin, p_hitRecord )
+   			//bool isShadow = p_scene.intersect( rayShadow, p_tMin, ls._distance, p_hitRecord )
 			bool		isShadow = p_scene.intersectAny( rayShadow, p_tMin, ls._distance );	//intersection pour l'ombre
 			if ( !isShadow )
 			{
