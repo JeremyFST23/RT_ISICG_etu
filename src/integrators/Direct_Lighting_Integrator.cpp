@@ -12,15 +12,10 @@ namespace RT_ISICG
 		/*Vec3f colorF = VEC3F_ZERO;//luminance finale
 		for (BaseLight* light : p_scene.getLights()) {//luminance de notre scene
 			LightSample ls = light->sample( p_hitRecord._point );
-			if ( !isShadow )
-			{
-				float theta	   = glm::dot( p_hitRecord._normal,ls._direction ); // angle entre normal et direction du rayon
-				float maxAngle = glm::max( theta, 0.f );	// max entre 0 et cos theta
-				colorF += p_hitRecord._object->getMaterial()->getFlatColor() * ls._radiance
-						  * maxAngle; // luminance finale
-			}
-				
-				
+			float theta	   = glm::dot( p_hitRecord._normal,ls._direction ); // angle entre normal et direction du rayon
+			float maxAngle = glm::max( theta, 0.f );	// max entre 0 et cos theta
+			colorF += p_hitRecord._object->getMaterial()->getFlatColor() * ls._radiance
+					  * maxAngle; // luminance finale	
 		}
   		return colorF;
 		*/
