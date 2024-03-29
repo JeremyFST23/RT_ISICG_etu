@@ -13,10 +13,14 @@ namespace RT_ISICG
 		// * INV_PIf : could be done in the constructor...
 		inline Vec3f evaluate() const { return _kd * INV_PIf; }
 
-		inline const Vec3f & getKd() const { return _kd; }
+		inline const Vec3f & getKd() const { 
+			return _kd;
+		}
+		
 
 	  private:
 		Vec3f _kd = WHITE;
+		
 	};
 } // namespace RT_ISICG
 
