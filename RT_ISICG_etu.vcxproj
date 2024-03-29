@@ -176,6 +176,8 @@ xcopy /y /d  "$(ProjectDir)lib\zlib1.dll" "$(OutDir)"</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\aabb.hpp" />
+    <ClInclude Include="src\brdfs\oren_nayar_brdf.hpp" />
+    <ClInclude Include="src\brdfs\phong_brdf.hpp" />
     <ClInclude Include="src\bvh.hpp" />
     <ClInclude Include="src\brdfs\lambert_brdf.hpp" />
     <ClInclude Include="src\cameras\base_camera.hpp" />
@@ -197,6 +199,8 @@ xcopy /y /d  "$(ProjectDir)lib\zlib1.dll" "$(OutDir)"</Command>
     <ClInclude Include="src\io\stb_include.hpp" />
     <ClInclude Include="src\materials\base_material.hpp" />
     <ClInclude Include="src\materials\lambert_material.hpp" />
+    <ClInclude Include="src\materials\matte_material.hpp" />
+    <ClInclude Include="src\materials\plastic_material.hpp" />
     <ClInclude Include="src\objects\base_object.hpp" />
     <ClInclude Include="src\objects\implicit_surface.hpp" />
     <ClInclude Include="src\objects\plane.hpp" />

@@ -220,5 +220,17 @@
     <ClInclude Include="src\lights\Quad_Light.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\brdfs\oren_nayar_brdf.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\brdfs\phong_brdf.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\materials\matte_material.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\materials\plastic_material.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

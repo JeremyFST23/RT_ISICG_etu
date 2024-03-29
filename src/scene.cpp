@@ -8,6 +8,7 @@
 #include <assimp/scene.h>
 #include "materials/lambert_material.hpp"
 #include "materials/matte_material.hpp"
+#include "materials/plastic_material.hpp"
 
 namespace RT_ISICG
 {
@@ -143,7 +144,9 @@ namespace RT_ISICG
 		_addMaterial( new LambertMaterial( "LambertPlane", RED ) );
 		//question2
 		_addMaterial( new MatteMaterial( "MatteSphere", GREY, 0.6f ) );
-		_attachMaterialToObject( "MatteSphere", "Sphere1" );
+		//question3
+		_addMaterial( new PlasticMaterial( "PlastricSphere", GREY * 0.7f,GREY * 0.3f, 8.f ) );
+		_attachMaterialToObject( "PlastricSphere", "Sphere1" );
 		_attachMaterialToObject( "LambertPlane", "Plane1" );
 		_addLight( new PointLight( Vec3f( 0, 0, -2 ), WHITE, 60.f ) );
 	}
