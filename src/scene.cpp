@@ -6,6 +6,8 @@
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
+#include "materials/lambert_material.hpp"
+#include "materials/matte_material.hpp"
 
 namespace RT_ISICG
 {
@@ -29,7 +31,8 @@ namespace RT_ISICG
 
 	void Scene::init() { 
 		//initTp3_2();
-		initTp4();
+		//initTp4();
+		initTp5();
 	}
 
 	void Scene::initTp1() {
@@ -131,6 +134,21 @@ namespace RT_ISICG
 		// ================================================================
 		_addLight( new PointLight( Vec3f( 0.f, 3.f, -5.f ), WHITE, 100.f ) );
 	}
+
+	void Scene::initTp5() { 
+		_addObject( new Sphere( "Sphere1", Vec3f( 0.f, 0.f, 3.f ), 1.f ) );
+		_addObject( new Plane( "Plane1", Vec3f( 0.f, -2.f, 0.f ), Vec3f( 0.f, 1.f, 0.f ) ) );
+		//question1
+		_addMaterial(new LambertMaterial("LambertSphere",GREY));
+		_addMaterial( new LambertMaterial( "LambertPlane", RED ) );
+		//question2
+		_addMaterial( new MatteMaterial( "MatteSphere", GREY, 0.6f ) );
+		_attachMaterialToObject( "MatteSphere", "Sphere1" );
+		_attachMaterialToObject( "LambertPlane", "Plane1" );
+		_addLight( new PointLight( Vec3f( 0, 0, -2 ), WHITE, 60.f ) );
+	}
+		
+
 
 	void Scene::loadFileTriangleMesh( const std::string & p_name, const std::string & p_path )
 	{

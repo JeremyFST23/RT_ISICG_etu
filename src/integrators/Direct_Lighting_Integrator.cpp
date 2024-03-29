@@ -55,8 +55,9 @@ namespace RT_ISICG
 						float theta	   = glm::dot( p_hitRecord._normal,
 												   ls._direction ); // angle entre normal et direction du rayon
 						float maxAngle = glm::max( theta, 0.f );	// max entre 0 et cos theta
-						colorF += p_hitRecord._object->getMaterial()->getFlatColor() * ls._radiance
-								  * maxAngle; // luminance finale
+						//colorF += p_hitRecord._object->getMaterial()->getFlatColor() * ls._radiance * maxAngle; // luminance finale
+						//Tp5
+						colorF += p_hitRecord._object->getMaterial()->shade(p_ray,p_hitRecord,ls) * ls._radiance * maxAngle;
 					}
 				}
 				colorF /= _nbLightSamples;//moyenne contribution lumineuse

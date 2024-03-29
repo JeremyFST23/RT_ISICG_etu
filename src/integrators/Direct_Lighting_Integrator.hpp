@@ -3,6 +3,8 @@
 
 #include "base_integrator.hpp"
 #include "scene.hpp"
+#include "materials/lambert_material.hpp"
+#include "materials/matte_material.hpp"
 
 namespace RT_ISICG
 {

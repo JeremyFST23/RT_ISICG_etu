@@ -11,7 +11,7 @@ namespace RT_ISICG
 		size_t hitTri	= _triangles.size(); // Hit triangle id.
 		float  _u		= 0.f;
 		float  _v		= 0.f;
-		if ( !aabb.intersect( p_ray, p_tMin, p_tMax ) ) { return false; }
+		if ( !_aabb.intersect( p_ray, p_tMin, p_tMax ) ) { return false; }
 		for ( size_t i = 0; i < _triangles.size(); i++ )
 		{
 			float t;

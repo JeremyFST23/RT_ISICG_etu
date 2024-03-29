@@ -49,6 +49,7 @@ namespace RT_ISICG
 		void initTp2_3();
 		void initTp3_2();
 		void initTp4();
+		void initTp5();
 
 	  private:
 		ObjectMap	_objectMap;
