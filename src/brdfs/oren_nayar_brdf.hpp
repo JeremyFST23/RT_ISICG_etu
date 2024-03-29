@@ -11,7 +11,7 @@ namespace RT_ISICG
 		OrenNayarBRDF( const Vec3f & p_kd, const float & p_sigma ) : _kd( p_kd ), _sigma( p_sigma ) {};
 
 		// * INV_PIf : could be done in the constructor...
-		inline Vec3f evaluate( const Vec3f & p_incindence, const Vec3f & p_observation, const Vec3f & p_normal ) const
+		inline Vec3f evaluate( const Vec3f & p_incidence, const Vec3f & p_observation, const Vec3f & p_normal ) const
 		{
 			if ( _sigma == 0 ) { return _kd * INV_PIf; }
 			else
@@ -19,10 +19,10 @@ namespace RT_ISICG
 				float A = 1 - ( 0.5f * ( ( _sigma * _sigma ) / ( ( _sigma * _sigma ) + 0.33f ) ) );
 				float B = 0.45f * ( ( _sigma * _sigma ) / ( ( _sigma * _sigma ) + 0.09f ) );
 
-				float theta_i = glm::acos( glm::dot( p_normal, p_incindence ) );
+				float theta_i = glm::acos( glm::dot( p_normal, p_incidence ) );
 				float theta_o = glm::acos( glm::dot( p_normal, p_observation ) );
 
-				float phi_i = glm::atan( p_incindence.y, p_incindence.x );
+				float phi_i = glm::atan( p_incidence.y, p_incidence.x );
 				float phi_o = glm::atan( p_observation.y, p_observation.x );
 
 				float alpha = glm::max( theta_i, theta_o );

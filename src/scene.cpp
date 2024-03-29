@@ -9,6 +9,7 @@
 #include "materials/lambert_material.hpp"
 #include "materials/matte_material.hpp"
 #include "materials/plastic_material.hpp"
+#include "materials/cook_torrance_material.hpp"
 
 namespace RT_ISICG
 {
@@ -145,8 +146,11 @@ namespace RT_ISICG
 		//question2
 		_addMaterial( new MatteMaterial( "MatteSphere", GREY, 0.6f ) );
 		//question3
-		_addMaterial( new PlasticMaterial( "PlastricSphere", GREY * 0.7f,GREY * 0.3f, 8.f ) );
-		_attachMaterialToObject( "PlastricSphere", "Sphere1" );
+		_addMaterial( new PlasticMaterial( "PlastricSphere", GREY * 0.7f,GREY * 0.3f,64.f ) );
+		//question4
+		Vec3f F0 = Vec3f( 1.f, 0.85f, 0.57f );
+		_addMaterial( new CookTorranceMaterial( "CookSphere", F0, F0, 0.3f, 1.f ) );
+		_attachMaterialToObject( "CookSphere", "Sphere1" );
 		_attachMaterialToObject( "LambertPlane", "Plane1" );
 		_addLight( new PointLight( Vec3f( 0, 0, -2 ), WHITE, 60.f ) );
 	}
