@@ -191,6 +191,7 @@ xcopy /y /d  "$(ProjectDir)lib\zlib1.dll" "$(OutDir)"</Command>
     <ClInclude Include="src\integrators\base_integrator.hpp" />
     <ClInclude Include="src\integrators\Direct_Lighting_Integrator.hpp" />
     <ClInclude Include="src\integrators\ray_cast_integrator.hpp" />
+    <ClInclude Include="src\integrators\whitted_integrator.hpp" />
     <ClInclude Include="src\lights\base_light.hpp" />
     <ClInclude Include="src\lights\light_sample.hpp" />
     <ClInclude Include="src\lights\PointLight.hpp" />

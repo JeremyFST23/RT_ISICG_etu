@@ -31,8 +31,12 @@ namespace RT_ISICG
 		/* Vec3f p_position = Vec3f( 0.f, 2.f, -6.f ); // Tp4
 		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 80.f );*/
 		//TP5
-		Vec3f p_position = Vec3f( 0.f, 0.f, 0.f );
-		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 1.f );
+		/*Vec3f p_position = Vec3f( 0.f, 0.f, 0.f );
+		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 1.f );*/
+		//TP6
+		Vec3f p_position = Vec3f( 0.f, 2.f, -6.f );
+		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 100.f );
+
 		Vec3f p_up		 = Vec3f( 0, 1, 0 );
 		float fov		 = 60.f;
 
@@ -53,7 +57,7 @@ namespace RT_ISICG
 		renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
 		renderer.setBackgroundColor( GREY );
 		//Tp1 antialiasing
-		renderer.setNbPixelSamples( 32 );
+		renderer.setNbPixelSamples( 128 );
 		//Tp1 antialiasing
 		// Launch rendering.
 		std::cout << "Rendering..." << std::endl;
