@@ -150,6 +150,10 @@ namespace RT_ISICG
 		//question4
 		Vec3f F0 = Vec3f( 1.f, 0.85f, 0.57f );
 		_addMaterial( new CookTorranceMaterial( "CookSphere", F0, F0, 0.3f, 1.f ) );
+		//En utilisant notre objet bunny il faut changer la position de la camera
+		//const std::string Data_Path = "../RT_ISICG_etu/data/";
+		//loadFileTriangleMesh( "UVsphere", Data_Path + "Bunny.obj" );
+		//_attachMaterialToObject( "CookSphere", "UVsphere_defaultobject" );
 		_attachMaterialToObject( "CookSphere", "Sphere1" );
 		_attachMaterialToObject( "LambertPlane", "Plane1" );
 		_addLight( new PointLight( Vec3f( 0, 0, -2 ), WHITE, 60.f ) );

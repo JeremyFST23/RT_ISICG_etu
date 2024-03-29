@@ -53,7 +53,7 @@ namespace RT_ISICG
 		renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
 		renderer.setBackgroundColor( GREY );
 		//Tp1 antialiasing
-		renderer.setNbPixelSamples( 64 );
+		renderer.setNbPixelSamples( 32 );
 		//Tp1 antialiasing
 		// Launch rendering.
 		std::cout << "Rendering..." << std::endl;
