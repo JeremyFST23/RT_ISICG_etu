@@ -17,7 +17,7 @@ namespace RT_ISICG
 
 		const IntegratorType getType() const override { return IntegratorType::WHITTED; }
 
-		virtual Vec3f Li( const Scene & p_scene, const Ray & p_ray, const float p_tMin, const float p_tMax ) const;
+		virtual Vec3f Li( const Scene & p_scene, const Ray & p_ray, const float p_tMin, const float p_tMax ) const override;
 
 	  private:
 		virtual Vec3f _directLighting( const Scene &	 p_scene,
@@ -25,11 +25,13 @@ namespace RT_ISICG
 									   const float		 p_tMin,
 									   const HitRecord & p_hitRecord ) const;
 
+
 		virtual Vec3f _trace( const Scene &		p_scene,
 							  const Ray &		p_ray,
 							  const float		p_tMin,
-							  const HitRecord & p_hitRecord,
+							  const float p_tMax,
 							  const int p_nbBounces) const;
+
 		int _nbBounces		= 5;
 		int			  _nbLightSamples = 32;
 	};

@@ -54,7 +54,8 @@ namespace RT_ISICG
 		// Create and setup the renderer.
 		Renderer renderer;
 		//renderer.setIntegrator( IntegratorType::RAY_CAST ); //Pour le tp2_1 on utilise ray cast
-		renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
+		//renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
+		renderer.setIntegrator( IntegratorType::WHITTED );
 		renderer.setBackgroundColor( GREY );
 		//Tp1 antialiasing
 		renderer.setNbPixelSamples( 128 );

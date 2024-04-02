@@ -10,6 +10,7 @@
 #include "materials/matte_material.hpp"
 #include "materials/plastic_material.hpp"
 #include "materials/cook_torrance_material.hpp"
+#include "materials/mirror_material.hpp"
 
 namespace RT_ISICG
 {
@@ -170,12 +171,14 @@ namespace RT_ISICG
 		_addMaterial( new MatteMaterial( "BlueMatte",BLUE, 0.6f ) );
 		_addMaterial( new MatteMaterial( "GreyMatte",GREY, 0.6f ) );
 		_addMaterial( new MatteMaterial( "MagentaMatte",MAGENTA, 0.6f ) );
+
+		_addMaterial( new MirrorMaterial( "Mirror" ) );
 		// ================================================================
 		// Add objects .
 		// ================================================================
 		// Spheres .
 		_addObject( new Sphere( "Sphere1", Vec3f( -2.f, 0.f, 3.f ), 1.5f ) );
-		_attachMaterialToObject( "WhiteMatte", "Sphere1" );
+		_attachMaterialToObject( "Mirror", "Sphere1" );
 		_addObject( new Sphere( "Sphere2", Vec3f( 2.f, 0.f, 3.f ), 1.5f ) );
 		_attachMaterialToObject( "WhiteMatte", "Sphere2" );
 		// Pseudo Cornell box made with infinite planes .
@@ -192,8 +195,8 @@ namespace RT_ISICG
 		// ================================================================
 		// Add lights .
 		// ================================================================
-		//_addLight( new PointLight( Vec3f( 0.f, 5.f, 0.f ), WHITE, 100.f ) );
-		_addLight ( new QuadLight ( Vec3f ( 1.f, 5.f, -2.f ),Vec3f ( -2.f, 0.f, 0.f ) ,Vec3f ( 0.f, 1.f, 2.f ) , WHITE , 40.f ) );
+		_addLight( new PointLight( Vec3f( 0.f, 5.f, 0.f ), WHITE, 100.f ) );
+		//_addLight ( new QuadLight ( Vec3f ( 1.f, 5.f, -2.f ),Vec3f ( -2.f, 0.f, 0.f ) ,Vec3f ( 0.f, 1.f, 2.f ) , WHITE , 40.f ) );
 	}
 	void Scene::loadFileTriangleMesh( const std::string & p_name, const std::string & p_path )
 	{
