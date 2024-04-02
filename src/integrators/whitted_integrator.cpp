@@ -52,9 +52,9 @@ namespace RT_ISICG
 		else {
 			if ( p_scene.intersect( p_ray, p_tMin, p_tMax, hitRecord ) )
 				{
-					if (hitRecord._object->getMaterial()->isMirror()) {
+					if (hitRecord._object->getMaterial()->isMirror()==true) {
 						// On calcule la direction du rayon réfléchi
-						Vec3f direction_reflect = glm::reflect( -p_ray.getDirection(), hitRecord._normal );
+						Vec3f direction_reflect = glm::reflect( p_ray.getDirection(), hitRecord._normal );
 						Ray	  ray( hitRecord._point, direction_reflect );
 						ray.offset( hitRecord._normal );
 						return _trace( p_scene, ray, p_tMin, p_tMax, p_nbBounces + 1 );

@@ -180,7 +180,7 @@ namespace RT_ISICG
 		_addObject( new Sphere( "Sphere1", Vec3f( -2.f, 0.f, 3.f ), 1.5f ) );
 		_attachMaterialToObject( "Mirror", "Sphere1" );
 		_addObject( new Sphere( "Sphere2", Vec3f( 2.f, 0.f, 3.f ), 1.5f ) );
-		_attachMaterialToObject( "WhiteMatte", "Sphere2" );
+		_attachMaterialToObject( "Mirror", "Sphere2" );
 		// Pseudo Cornell box made with infinite planes .
 		_addObject( new Plane( "PlaneGround", Vec3f( 0.f, -3.f, 0.f ), Vec3f( 0.f, 1.f, 0.f ) ) );
 		_attachMaterialToObject( "GreyMatte", "PlaneGround" );
@@ -191,7 +191,7 @@ namespace RT_ISICG
 		_addObject( new Plane( "PlaneRight", Vec3f( -5.f, 0.f, 0.f ), Vec3f( 1.f, 0.f, 0.f ) ) );
 		_attachMaterialToObject( "BlueMatte", "PlaneRight" );
 		_addObject( new Plane( "PlaneFront", Vec3f( 0.f, 0.f, 10.f ), Vec3f( 0.f, 0.f, -1.f ) ) );
-		_attachMaterialToObject( "MagentaMatte", "PlaneFront" );
+		_attachMaterialToObject( "Mirror", "PlaneFront" );
 		// ================================================================
 		// Add lights .
 		// ================================================================

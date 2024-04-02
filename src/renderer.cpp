@@ -74,8 +74,8 @@ namespace RT_ISICG
 					 float p_sx = (float)(i + randomFloat()) / ( width - 1 );
 					 float p_sy = (float)(j + randomFloat())/ ( height - 1 );
 					 Ray   ray	= p_camera->generateRay( p_sx, p_sy );
-					 //
-					 color += _integrator->Li( p_scene, ray, 0.f, 1000.f );	
+					 //ici changer p_tmax pour le tp6 question 2 pour éviter des pixels gris au centre de l'image
+					 color += _integrator->Li( p_scene, ray, 0.f, 10000.f );	
 				}
 				color /= _nbPixelSamples;
 				color = glm::clamp( color, 0.f, 1.f );//va mettre nos couleurs entre 0 et 1
