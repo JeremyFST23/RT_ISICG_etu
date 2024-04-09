@@ -32,6 +32,7 @@ namespace RT_ISICG
 		{
 			p_hitRecord._point	= p_ray.pointAtT( tClosest );
 			p_hitRecord._normal = _triangles[ hitTri ].getNormal(_u,_v);
+			//p_hitRecord._normal = _triangles[ hitTri ].getFaceNormal();
 			p_hitRecord.faceNormal( p_ray.getDirection() );
 			p_hitRecord._distance = tClosest;
 			p_hitRecord._object	  = this;

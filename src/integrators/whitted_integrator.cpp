@@ -52,12 +52,26 @@ namespace RT_ISICG
 		else {
 			if ( p_scene.intersect( p_ray, p_tMin, p_tMax, hitRecord ) )
 				{
+				float cos_theta_i = glm::dot( -p_ray.getDirection(), hitRecord._normal );
+				
 					if (hitRecord._object->getMaterial()->isMirror()==true) {
 						// On calcule la direction du rayon réfléchi
 						Vec3f direction_reflect = glm::reflect( p_ray.getDirection(), hitRecord._normal );
 						Ray	  ray( hitRecord._point, direction_reflect );
 						ray.offset( hitRecord._normal );
 						return _trace( p_scene, ray, p_tMin, p_tMax, p_nbBounces + 1 );
+					}
+
+					if (hitRecord._object->getMaterial()->isTransparent() == true) {
+						Vec3f direction_reflect = glm::reflect( p_ray.getDirection(), hitRecord._normal );
+						Ray	  ray_reflect( hitRecord._point, direction_reflect );
+						ray_reflect.offset( hitRecord._normal );
+						Vec3f reflect_color	= _trace( p_scene, ray_reflect, p_tMin, p_tMax, p_nbBounces + 1 );
+						Vec3f direction_refract = glm::refract( p_ray.getDirection(), hitRecord._normal,1.f );
+						Ray	  ray_refract( hitRecord._point, direction_reflect );
+						ray_refract.offset( hitRecord._normal );
+						Vec3f refract_color = _trace( p_scene, ray_refract, p_tMin, p_tMax, p_nbBounces + 1 );
+						return ( reflect_color + refract_color );
 					}
 
 					else {

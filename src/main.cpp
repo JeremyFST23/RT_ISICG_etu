@@ -28,11 +28,11 @@ namespace RT_ISICG
 		//Vec3f p_lookat	 = Vec3f( 1.f, 0.f, 1.f );
 
 		//Vec3f p_position = Vec3f( 0.f, 0.f, -2.f );//Tp3
-		/* Vec3f p_position = Vec3f( 0.f, 2.f, -6.f ); // Tp4
+		/*Vec3f p_position = Vec3f( 0.f, 2.f, -6.f ); // Tp4
 		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 80.f );*/
 		//TP5
-		/*Vec3f p_position = Vec3f( 0.f, 0.f, 0.f );
-		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 1.f );*/
+		//Vec3f p_position = Vec3f( 0.f, 0.f, 0.f );
+		//Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 1.f );
 		//TP6
 		Vec3f p_position = Vec3f( 0.f, 2.f, -6.f );
 		Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 100.f );
@@ -54,11 +54,11 @@ namespace RT_ISICG
 		// Create and setup the renderer.
 		Renderer renderer;
 		//renderer.setIntegrator( IntegratorType::RAY_CAST ); //Pour le tp2_1 on utilise ray cast
-		//renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
-		renderer.setIntegrator( IntegratorType::WHITTED );
+		renderer.setIntegrator( IntegratorType::DIRECT_LIGHTING );
+		//renderer.setIntegrator( IntegratorType::WHITTED );
 		renderer.setBackgroundColor( GREY );
 		//Tp1 antialiasing
-		renderer.setNbPixelSamples( 128 );
+		renderer.setNbPixelSamples( 64 );
 		//Tp1 antialiasing
 		// Launch rendering.
 		std::cout << "Rendering..." << std::endl;

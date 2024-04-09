@@ -40,7 +40,23 @@ namespace RT_ISICG
 						 const unsigned int p_lastTriangleId,
 						 const unsigned int p_depth )
 	{
-		/// TODO
+		p_node->_aabb = AABB();
+		for (int i = p_firstTriangleId; i < p_lastTriangleId; i++) {
+			p_node->_aabb.extend( (*_triangles)[ i ].getAABB() );
+		}
+		//arret de la récursion
+		if (p_lastTriangleId - p_firstTriangleId <= _maxTrianglesPerLeaf || p_depth >= _maxDepth) {
+			p_node->_firstTriangleId = p_firstTriangleId;
+			p_node->_lastTriangleId	 = p_lastTriangleId;
+			return;
+		}
+		if (!(p_lastTriangleId - p_firstTriangleId <= _maxTrianglesPerLeaf || p_depth >= _maxDepth)) {
+			//on récupère le plus grand axe
+			int axe_partition = p_node->_aabb.largestAxis();
+			//on récupère milieu de axe_partition
+			float milieu		= p_node->_aabb.centroid()[axe_partition];
+			//int idPartition = 
+		}
 	}
 
 	bool BVH::_intersectRec( const BVHNode * p_node,

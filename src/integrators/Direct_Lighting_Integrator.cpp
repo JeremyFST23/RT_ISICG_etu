@@ -8,20 +8,11 @@ namespace RT_ISICG
 													 const HitRecord & p_hitRecord ) const
 	{
 
-		//TP3 question 3
-		/*Vec3f colorF = VEC3F_ZERO;//luminance finale
-		for (BaseLight* light : p_scene.getLights()) {//luminance de notre scene
-			LightSample ls = light->sample( p_hitRecord._point );
-			float theta	   = glm::dot( p_hitRecord._normal,ls._direction ); // angle entre normal et direction du rayon
-			float maxAngle = glm::max( theta, 0.f );	// max entre 0 et cos theta
-			colorF += p_hitRecord._object->getMaterial()->getFlatColor() * ls._radiance
-					  * maxAngle; // luminance finale	
-		}
-  		return colorF;
-		*/
-		//Tp3 question 3
-		//TP3 question 4
-		/*Vec3f colorF = VEC3F_ZERO;//luminance finale
+		
+		
+		
+		//TP3 question 2
+		/*Vec3f colorF = VEC3F_ZERO; // luminance finale
 		for (BaseLight* light : p_scene.getLights()) {//luminance de notre scene
 			LightSample ls = light->sample( p_hitRecord._point );
 			Ray			rayShadow( p_hitRecord._point, ls._direction );
@@ -38,11 +29,11 @@ namespace RT_ISICG
 				
 				
 		}
-  		return colorF;
-		*/
-		//Tp3 question 4
-		//TP4 question 3
-		Vec3f colorF = VEC3F_ZERO;//luminance finale
+  		return colorF;*/
+		
+		//Tp3 question 2
+		//TP3 question 3
+		Vec3f colorF = VEC3F_ZERO; // luminance finale
 		for (BaseLight* light : p_scene.getLights()) {//luminance de notre scene
 			LightSample ls = light->sample( p_hitRecord._point );
 			Ray			rayShadow( p_hitRecord._point, ls._direction );

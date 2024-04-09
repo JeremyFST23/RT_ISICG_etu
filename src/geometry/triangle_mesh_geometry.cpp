@@ -13,7 +13,8 @@ namespace RT_ISICG
 												  _refMesh->_vertices[ p_v2 ] - _refMesh->_vertices[ p_v0 ] ) );
 	}
 
-	Vec3f & TriangleMeshGeometry::getNormal(const float & p_u, const float & p_v) const { 
+	Vec3f & TriangleMeshGeometry::getNormal( const float & p_u, const float & p_v ) const
+	{ 
 		Vec3f n = ( ( 1 - p_u - p_v ) * _refMesh->_normals[ _v0 ] ) + ( p_u * _refMesh->_normals[ _v1 ] )
 				  + ( p_v * _refMesh->_normals[ _v2 ] );
 		return n;
@@ -26,8 +27,7 @@ namespace RT_ISICG
 		const Vec3f & v0 = _refMesh->_vertices[ _v0 ];
 		const Vec3f & v1 = _refMesh->_vertices[ _v1 ];
 		const Vec3f & v2 = _refMesh->_vertices[ _v2 ];
-
-		/// TODO
+		//algorithme trouvé ici : https://fr.wikipedia.org/wiki/Algorithme_d%27intersection_de_M%C3%B6ller-Trumbore#:~:text=L'algorithme%20d'intersection%20%22,du%20plan%20contenant%20le%20triangle.
 		Vec3f			n				= VEC3F_ZERO;
 		constexpr float epsilon			= std::numeric_limits<float>::epsilon();
 		Vec3f edge1 = v1 - v0;

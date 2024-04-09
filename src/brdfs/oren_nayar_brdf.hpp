@@ -19,6 +19,7 @@ namespace RT_ISICG
 				float A = 1 - ( 0.5f * ( ( _sigma * _sigma ) / ( ( _sigma * _sigma ) + 0.33f ) ) );
 				float B = 0.45f * ( ( _sigma * _sigma ) / ( ( _sigma * _sigma ) + 0.09f ) );
 
+				//on fait dot pour avoir cos theta_i et acos pour avoir l'inverse du cos --> theta_i
 				float theta_i = glm::acos( glm::dot( p_normal, p_incidence ) );
 				float theta_o = glm::acos( glm::dot( p_normal, p_observation ) );
 

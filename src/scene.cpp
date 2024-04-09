@@ -117,8 +117,11 @@ namespace RT_ISICG
 		// Add objects .
 		// ================================================================
 		// OBJ.
-		const std::string Data_Path = "../rt_isicg_2023-main/data/";
-		loadFileTriangleMesh( "UVsphere",Data_Path+"Bunny.obj");
+		const std::string Data_Path = "../RT_ISICG_etu/data/";
+		//pour la sphère
+		//loadFileTriangleMesh( "UVsphere",Data_Path+"uvsphere.obj");
+		//pour le lapin
+		loadFileTriangleMesh( "UVsphere", Data_Path + "Bunny.obj" );
 		_attachMaterialToObject( "CyanColor", "UVsphere_defaultobject" );
 		// Pseudo Cornell box made with infinite planes .
 		_addObject( new Plane("PlaneGround",Vec3f(0.f, -3.f, 0.f), Vec3f( 0.f, 1.f, 0.f ) ) );
@@ -146,7 +149,7 @@ namespace RT_ISICG
 		_addMaterial(new LambertMaterial("LambertSphere",GREY));
 		_addMaterial( new LambertMaterial( "LambertPlane", RED ) );
 		//question2
-		_addMaterial( new MatteMaterial( "MatteSphere", GREY, 0.6f ) );
+		_addMaterial( new MatteMaterial( "MatteSphere", GREY, 0.f ) );
 		//question3
 		_addMaterial( new PlasticMaterial( "PlastricSphere", GREY * 0.7f,GREY * 0.3f,64.f ) );
 		//question4

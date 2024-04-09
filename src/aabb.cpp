@@ -2,6 +2,7 @@
 
 namespace RT_ISICG
 {
+	//algorithme trouvé ici https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection.html
 	bool AABB::intersect( const Ray & p_ray, const float p_tMin, const float p_tMax ) const
 	{
 		float txmin = ( _min.x - p_ray.getOrigin().x ) / p_ray.getDirection().x;
