@@ -89,7 +89,7 @@ namespace RT_ISICG
 				float sin_theta_t = ( n1 / n2 ) * sin_theta_i;
 				if ( sin_theta_t >= 1.f )
 				{
-					return _trace( p_scene, ray_reflect, p_tMin, p_tMax, p_nbBounces + 1, !p_inObject );
+					return _trace( p_scene, ray_reflect, p_tMin, p_tMax, p_nbBounces + 1, p_inObject );
 				}
 				// transmis
 				float cos_theta_t = sqrt( 1 - (  sin_theta_t * sin_theta_t ) );
