@@ -19,7 +19,6 @@ namespace RT_ISICG
 		{
 			return BLACK;
 		}
-		inline const bool	 isMirror() const override { return true; }
 		inline const Vec3f & getFlatColor() const override { return BLACK; }
 		inline const bool	 isTransparent() const override { return true; }
 		inline const float	 getIOR() const override { return _ior; }

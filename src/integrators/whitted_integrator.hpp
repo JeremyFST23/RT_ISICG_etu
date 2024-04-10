@@ -5,6 +5,7 @@
 #include "materials/lambert_material.hpp"
 #include "materials/matte_material.hpp"
 #include "materials/plastic_material.hpp"
+#include "materials/transparent_material.hpp"
 #include "scene.hpp"
 
 namespace RT_ISICG
@@ -30,7 +31,8 @@ namespace RT_ISICG
 							  const Ray &		p_ray,
 							  const float		p_tMin,
 							  const float p_tMax,
-							  const int p_nbBounces) const;
+							  const int p_nbBounces,
+							  const bool p_inObject) const;
 
 		int _nbBounces		= 5;
 		int			  _nbLightSamples = 32;
