@@ -29,8 +29,13 @@ namespace RT_ISICG
 		// Evaluate normal by computing gradient at 'p_point'
 		virtual Vec3f _evaluateNormal( const Vec3f & p_point ) const
 		{
-			/// TODO
-			return Vec3f( 1.f );
+			
+			//https://fr.wikipedia.org/wiki/Diff%C3%A9rence_finie
+			//pour calculer le gradient a un point on doit utiliser les dervive partiels par difference finie
+			float dx = (_sdf( Vec3f( p_point.x, p_point.y, p_point.z ) + Vec3f( _minDistance, 0.f, 0.f ) ) - _sdf(Vec3f(p_point.x, p_point.y, p_point.z))) /_minDistance;
+			float dy = (_sdf( Vec3f( p_point.x, p_point.y, p_point.z ) + Vec3f( 0.f, _minDistance, 0.f ) ) - _sdf(Vec3f(p_point.x, p_point.y, p_point.z))) /_minDistance;
+			float dz = (_sdf( Vec3f( p_point.x, p_point.y, p_point.z ) + Vec3f( 0.f, 0.f, _minDistance ) ) - _sdf(Vec3f(p_point.x, p_point.y, p_point.z))) /_minDistance;
+			return glm::normalize(Vec3f(dx,dy,dz));
 		}
 
 	  private:

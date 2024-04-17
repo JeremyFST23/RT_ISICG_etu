@@ -3,6 +3,8 @@
 #include "objects/sphere.hpp"
 #include "objects/plane.hpp"
 #include "objects/triangle_mesh.hpp"
+#include "objects/implicit_sphere.hpp"
+#include "objects/implicit_cut_hollow_sphere.hpp"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
@@ -37,7 +39,8 @@ namespace RT_ISICG
 		//initTp3_2();
 		//initTp4();
 		//initTp5();
-		initTp6();
+		//initTp6();
+		initTp7();
 	}
 
 	void Scene::initTp1() {
@@ -203,6 +206,28 @@ namespace RT_ISICG
 		_addLight( new PointLight( Vec3f( 0.f, 5.f, 0.f ), WHITE, 100.f ) );
 		//_addLight ( new QuadLight ( Vec3f ( 1.f, 5.f, -2.f ),Vec3f ( -2.f, 0.f, 0.f ) ,Vec3f ( 0.f, 1.f, 2.f ) , WHITE , 40.f ) );
 	}
+
+	void Scene::initTp7() {
+		// ================================================================
+		// Add materials .
+		// ================================================================
+		_addMaterial( new MatteMaterial( "WhiteMatte", WHITE, 0.6f ) );
+		_addMaterial( new MatteMaterial( "RedMatte", RED, 0.6f ) );
+		_addMaterial( new MatteMaterial( "GreenMatte", GREEN, 0.6f ) );
+		_addMaterial( new MatteMaterial( "BlueMatte", BLUE, 0.6f ) );
+		_addMaterial( new MatteMaterial( "GreyMatte", GREY, 0.6f ) );
+		_addMaterial( new MatteMaterial( "MagentaMatte", MAGENTA, 0.6f ) );
+
+		//_addObject( new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 1.f ) );
+		//_attachMaterialToObject( "WhiteMatte", "Sphere" );
+
+		_addObject( new ImplicitCutHollowSphere( "CutSphere", Vec3f( 0.f, 0.5f, 0.f ), 10.f, 0.2f, 0.01f ) );
+		_attachMaterialToObject( "WhiteMatte", "CutSphere" );
+
+		_addLight( new PointLight( Vec3f( 0.f, 2.f, 0.f ), WHITE, 100.f ) );
+
+	}
+
 	void Scene::loadFileTriangleMesh( const std::string & p_name, const std::string & p_path )
 	{
 		std::cout << "Loading: " << p_path << std::endl;
