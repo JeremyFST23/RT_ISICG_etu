@@ -38,8 +38,8 @@ namespace RT_ISICG
 		//Vec3f p_lookat	 = Vec3f( 0.f, 0.f, 100.f );
 
 		//Tp7
-		Vec3f p_position = Vec3f( 1.f, 0.5f, -6.f );
-		Vec3f p_lookat	 = Vec3f( 0.f, -0.5f, 0.f );
+		Vec3f p_position = Vec3f(1.f , 10.f, 0.f );
+		Vec3f p_lookat	 = Vec3f( 1.f, 1.f, 1.f );
 
 		Vec3f p_up		 = Vec3f( 0, 1, 0 );
 		float fov		 = 60.f;

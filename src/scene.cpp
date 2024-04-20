@@ -5,6 +5,7 @@
 #include "objects/triangle_mesh.hpp"
 #include "objects/implicit_sphere.hpp"
 #include "objects/implicit_cut_hollow_sphere.hpp"
+#include "objects/implicit_round_box.hpp"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
@@ -221,8 +222,11 @@ namespace RT_ISICG
 		//_addObject( new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 1.f ) );
 		//_attachMaterialToObject( "WhiteMatte", "Sphere" );
 
-		_addObject( new ImplicitCutHollowSphere( "CutSphere", Vec3f( 0.f, 0.5f, 0.f ), 10.f, 0.2f, 0.01f ) );
-		_attachMaterialToObject( "WhiteMatte", "CutSphere" );
+		//_addObject( new ImplicitCutHollowSphere( "CutSphere", Vec3f( 0.f, 0.5f, 0.f ), 10.f, 0.2f, 0.01f ) );
+		//_attachMaterialToObject( "WhiteMatte", "CutSphere" );
+
+		_addObject( new ImplicitRoundBox( "Box", Vec3f( 1.f, 1.f, 1.f ), Vec3f(1.f,1.f,1.f), 1.f ) );
+		_attachMaterialToObject( "WhiteMatte", "Box" );
 
 		_addLight( new PointLight( Vec3f( 0.f, 2.f, 0.f ), WHITE, 100.f ) );
 
