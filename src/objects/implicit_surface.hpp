@@ -31,10 +31,12 @@ namespace RT_ISICG
 		{
 			
 			//https://fr.wikipedia.org/wiki/Diff%C3%A9rence_finie
-			//pour calculer le gradient a un point on doit utiliser les dervive partiels par difference finie
-			float dx = (_sdf( Vec3f( p_point.x, p_point.y, p_point.z ) + Vec3f( _minDistance, 0.f, 0.f ) ) - _sdf(Vec3f(p_point.x, p_point.y, p_point.z))) /_minDistance;
-			float dy = (_sdf( Vec3f( p_point.x, p_point.y, p_point.z ) + Vec3f( 0.f, _minDistance, 0.f ) ) - _sdf(Vec3f(p_point.x, p_point.y, p_point.z))) /_minDistance;
-			float dz = (_sdf( Vec3f( p_point.x, p_point.y, p_point.z ) + Vec3f( 0.f, 0.f, _minDistance ) ) - _sdf(Vec3f(p_point.x, p_point.y, p_point.z))) /_minDistance;
+			// on doit utiliser les derive partiels par difference finie
+			float dx = ( _sdf( p_point + Vec3f( _minDistance, 0.f, 0.f ) )
+							  - _sdf( p_point ) )
+							/ _minDistance;
+			float dy = (_sdf( p_point + Vec3f( 0.f, _minDistance, 0.f ) ) - _sdf(p_point)) /_minDistance;
+			float dz = (_sdf( p_point + Vec3f( 0.f, 0.f, _minDistance ) ) - _sdf(p_point)) /_minDistance;
 			return glm::normalize(Vec3f(dx,dy,dz));
 		}
 

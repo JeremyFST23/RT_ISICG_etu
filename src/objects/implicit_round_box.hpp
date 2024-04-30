@@ -24,7 +24,8 @@ namespace RT_ISICG
 		// Signed Distance Function
 		virtual float _sdf( const Vec3f & p_point ) const override
 		{ 
-			Vec3f q = abs( p_point ) - _b + _rayon;
+			Vec3f point = p_point - _center;
+			Vec3f q		= abs( point ) - _b + _rayon;
 			return glm::length( max( q, 0.0f ) ) + glm::min( glm::max( q.x, glm::max( q.y, q.z ) ), 0.0f ) - _rayon;
 			
 		}

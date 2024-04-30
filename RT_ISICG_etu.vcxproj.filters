@@ -253,10 +253,13 @@
     <ClInclude Include="src\objects\implicit_sphere.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\implicit_cut_hollow_sphere.hpp">
+    <ClInclude Include="src\objects\implicit_round_box.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\implicit_round_box.hpp">
+    <ClInclude Include="src\objects\implicit_prism.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\objects\implicit_capped_torus.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
