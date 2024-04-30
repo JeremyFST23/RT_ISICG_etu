@@ -220,23 +220,23 @@ namespace RT_ISICG
 		_addMaterial( new MatteMaterial( "GreyMatte", GREY, 0.6f ) );
 		_addMaterial( new MatteMaterial( "MagentaMatte", MAGENTA, 0.6f ) );
 
-		_addObject( new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 1.f ) );
+		/*_addObject( new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 1.f ) );
 		_attachMaterialToObject( "WhiteMatte", "Sphere" );
-		_addLight( new PointLight( Vec3f( 1.5f, 2.f, -3.f ), WHITE, 60.f ) );
+		_addLight( new PointLight( Vec3f( 1.5f, 2.f, -3.f ), WHITE, 60.f ) );*/
 
 
 
-		//_addObject( new ImplicitRoundBox( "Box", Vec3f( 1.f, 1.f, 1.f ), Vec3f(1.f,0.5f,1.f), 0.2f ) );
-		//_attachMaterialToObject( "WhiteMatte", "Box" );
-		//_addLight( new PointLight( Vec3f( 1.f, 3.f, -3.f ), WHITE, 60.f ) );
+		/*_addObject( new ImplicitRoundBox( "Box", Vec3f( 1.f, 1.f, 1.f ), Vec3f( 1.f, 0.5f, 1.f ), 0.2f ) );
+		_attachMaterialToObject( "WhiteMatte", "Box" );
+		_addLight( new PointLight( Vec3f( 1.f, 3.f, -3.f ), WHITE, 60.f ) );*/
 
-		//_addObject( new ImplicitPrism("Prism",Vec3f(1.f,1.f,1.f), Vec2f(1.f,1.f) ));
-		//_attachMaterialToObject( "WhiteMatte", "Prism" );
-		//_addLight( new PointLight( Vec3f(4.f, 1.f, -5.f ), WHITE, 100.f ) );
+		/*_addObject( new ImplicitPrism( "Prism", Vec3f( 1.f, 1.f, 1.f ), Vec2f( 1.f, 1.f ) ) );
+		_attachMaterialToObject( "WhiteMatte", "Prism" );
+		_addLight( new PointLight( Vec3f(3.f, 1.f, -5.f ), WHITE, 100.f ) );*/
 
-		//_addObject( new ImplicitCapedTorus( "Torus", Vec3f( 1.f, 1.f, 1.f ), Vec2f( sin(2.5), cos(2.5) ), 0.4f, 0.2f ) );
-		//_attachMaterialToObject( "WhiteMatte", "Torus" );
-		//_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
+		_addObject( new ImplicitCapedTorus( "Torus", Vec3f( 1.f, 1.f, 1.f ), Vec2f( sin(2.5), cos(2.5) ), 0.6f, 0.2f ) );
+		_attachMaterialToObject( "WhiteMatte", "Torus" );
+		_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
 		
 		
 		
