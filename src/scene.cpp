@@ -236,7 +236,8 @@ namespace RT_ISICG
 
 		_addObject( new ImplicitCapedTorus( "Torus", Vec3f( 1.f, 1.f, 1.f ), Vec2f( sin(2.5), cos(2.5) ), 0.6f, 0.2f ) );
 		_attachMaterialToObject( "WhiteMatte", "Torus" );
-		_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
+		//_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
+		_addLight( new SpotLight( Vec3f( 1.f, 1.f, 4.f ), Vec3f(1.f,1.f,-1.f), 45.f, WHITE, 80.f ) );
 		
 		
 		

@@ -6,6 +6,7 @@
 #include "objects/base_object.hpp"
 #include "lights/PointLight.hpp"
 #include "lights/Quad_Light.hpp"
+#include "lights/Spot_Light.hpp"
 #include <exception>
 #include <map>
 #include <vector>
