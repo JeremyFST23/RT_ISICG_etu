@@ -13,7 +13,7 @@ namespace RT_ISICG
 
 		ImplicitSphere( const std::string & p_name,const Vec3f & p_center,const float & p_rayon ) : ImplicitSurface( p_name ),_center(p_center),_rayon(p_rayon) {}
 
-	  private:
+	  public:
 			// Signed Distance Function 
 		  virtual float _sdf(const Vec3f& p_point) const override {
 			  //on fait - _rayon pour avoir distance signée

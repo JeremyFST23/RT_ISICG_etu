@@ -7,6 +7,7 @@
 #include "objects/implicit_round_box.hpp"
 #include "objects/implicit_prism.hpp"
 #include "objects/implicit_capped_torus.hpp"
+#include "objects/csg.hpp"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
@@ -42,7 +43,8 @@ namespace RT_ISICG
 		//initTp4();
 		//initTp5();
 		//initTp6();
-		initTp7();
+		//initTp7();
+		initProjet();
 	}
 
 	void Scene::initTp1() {
@@ -236,10 +238,42 @@ namespace RT_ISICG
 
 		_addObject( new ImplicitCapedTorus( "Torus", Vec3f( 1.f, 1.f, 1.f ), Vec2f( sin(2.5), cos(2.5) ), 0.6f, 0.2f ) );
 		_attachMaterialToObject( "WhiteMatte", "Torus" );
-		//_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
-		_addLight( new SpotLight( Vec3f( 1.f, 1.f, 4.f ), Vec3f(1.f,1.f,-1.f), 45.f, WHITE, 80.f ) );
+		_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
 		
 		
+		
+		
+	}
+
+	void Scene::initProjet() {
+
+		_addMaterial( new MatteMaterial( "WhiteMatte", WHITE, 0.6f ) );
+		_addMaterial( new MatteMaterial( "RedMatte", RED, 0.6f ) );
+		_addMaterial( new MatteMaterial( "GreenMatte", GREEN, 0.6f ) );
+		_addMaterial( new MatteMaterial( "BlueMatte", BLUE, 0.6f ) );
+		_addMaterial( new MatteMaterial( "GreyMatte", GREY, 0.6f ) );
+		_addMaterial( new MatteMaterial( "MagentaMatte", MAGENTA, 0.6f ) );
+
+		_addMaterial( new MirrorMaterial( "Mirror" ) );
+		_addMaterial( new TransparentMaterial( "Transparent" ) );
+
+		/* _addObject(
+			new ImplicitCapedTorus( "Torus", Vec3f( 1.f, 1.f, 1.f ), Vec2f( sin( 2.5 ), cos( 2.5 ) ), 0.6f, 0.2f ) );
+		_attachMaterialToObject( "WhiteMatte", "Torus" );
+		_addLight( new SpotLight( Vec3f( 1.f, 1.f, 4.f ), Vec3f( 1.f, 1.f, -1.f ), 45.f, WHITE, 80.f ) );*/
+
+		ImplicitSphere * sphere = new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 1.f );
+		float			   sdf_sphere = sphere->_sdf( Vec3f( 1.f, 1.f, 1.f ) );
+		ImplicitRoundBox * box	  = new ImplicitRoundBox( "Box", Vec3f( 1.f, 1.f, 1.f ), Vec3f( 1.f, 0.5f, 1.f ), 0.2f );
+		float			   sdf_box = box->_sdf( Vec3f( 1.f, 1.f, 1.f ) );
+		
+		CSG 			  * csg = new CSG( "CSG", 2,sdf_sphere,sdf_box );
+		_addObject( csg );
+		_attachMaterialToObject( "WhiteMatte", "CSG" );
+		_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
+
+
+
 		
 	}
 

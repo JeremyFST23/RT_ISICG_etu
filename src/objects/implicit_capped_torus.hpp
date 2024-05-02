@@ -21,7 +21,7 @@ namespace RT_ISICG
 		{
 		}
 
-	  private:
+	  public:
 		// Signed Distance Function
 		virtual float _sdf( const Vec3f & p_point ) const override
 		{
