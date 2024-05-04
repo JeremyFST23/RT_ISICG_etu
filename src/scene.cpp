@@ -262,15 +262,19 @@ namespace RT_ISICG
 		_attachMaterialToObject( "WhiteMatte", "Torus" );
 		_addLight( new SpotLight( Vec3f( 1.f, 1.f, 4.f ), Vec3f( 1.f, 1.f, -1.f ), 45.f, WHITE, 80.f ) );*/
 
-		ImplicitSphere * sphere = new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 1.f );
+		ImplicitSphere * sphere = new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 2.f );
+		_addObject( sphere );
+		//_attachMaterialToObject( "WhiteMatte", "Sphere" );
 		float			   sdf_sphere = sphere->_sdf( Vec3f( 1.f, 1.f, 1.f ) );
-		ImplicitRoundBox * box	  = new ImplicitRoundBox( "Box", Vec3f( 1.f, 1.f, 1.f ), Vec3f( 1.f, 0.5f, 1.f ), 0.2f );
+		ImplicitRoundBox * box	  = new ImplicitRoundBox( "Box", Vec3f( 1.f, 1.f, 1.f ), Vec3f( 2.f, 1.f, 2.f ), 0.2f );
 		float			   sdf_box = box->_sdf( Vec3f( 1.f, 1.f, 1.f ) );
+		_addObject( box );
+		//_attachMaterialToObject( "WhiteMatte", "Box" );
 		
-		CSG 			  * csg = new CSG( "CSG", 2,sdf_sphere,sdf_box );
+		CSG * csg = new CSG( "Csg", 1, sdf_box, sdf_sphere );
 		_addObject( csg );
-		_attachMaterialToObject( "WhiteMatte", "CSG" );
-		_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
+		_attachMaterialToObject( "WhiteMatte", "Csg" );
+		_addLight( new PointLight( Vec3f( 1.f, 1.f, -3.f ), WHITE, 100.f ) );
 
 
 

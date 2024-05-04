@@ -17,19 +17,27 @@ namespace RT_ISICG
 		}
 
 	  public:
+
+		  virtual int getId() { 
+			  return _id;
+		  }
 		
 		  virtual float _sdf( const Vec3f & p_point ) const override
 		  {
 			  if (_id == 1) { 
+				  // UNION 
 				  return glm::min( _sdf_obj1, _sdf_obj2 );
 			  }
 			  if (_id == 2) { 
+				  // INTERSECTION 
 				  return glm::max( _sdf_obj1, _sdf_obj2 );
 			  }
 			  if (_id == 3) { 
+				  // SOUSTRACTION 
 				  return glm::max( -_sdf_obj1, _sdf_obj2 );
 			  }
 			  if ( _id == 4 ) { 
+				  // XOR 
 				  return glm::max( glm::min( _sdf_obj1, _sdf_obj2 ), -glm::max( _sdf_obj1, _sdf_obj2 ) );
 			  }
 			  else {

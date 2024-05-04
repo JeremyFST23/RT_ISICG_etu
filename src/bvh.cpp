@@ -16,7 +16,8 @@ namespace RT_ISICG
 		Chrono chr;
 		chr.start();
 
-		/// TODO
+		//_root = new BVHNode();
+		//_buildRec( _root, 0, p_triangles->size(), 1 );
 
 		chr.stop();
 
@@ -25,14 +26,12 @@ namespace RT_ISICG
 
 	bool BVH::intersect( const Ray & p_ray, const float p_tMin, const float p_tMax, HitRecord & p_hitRecord ) const
 	{
-		/// TODO
-		return false;
+		return _intersectRec( _root, p_ray, p_tMin, p_tMax, p_hitRecord );
 	}
 
 	bool BVH::intersectAny( const Ray & p_ray, const float p_tMin, const float p_tMax ) const
 	{
-		/// TODO
-		return false;
+		return _intersectAnyRec( _root, p_ray, p_tMin, p_tMax );
 	}
 
 	void BVH::_buildRec( BVHNode *			p_node,
@@ -40,23 +39,21 @@ namespace RT_ISICG
 						 const unsigned int p_lastTriangleId,
 						 const unsigned int p_depth )
 	{
-		p_node->_aabb = AABB();
-		for (int i = p_firstTriangleId; i < p_lastTriangleId; i++) {
-			p_node->_aabb.extend( (*_triangles)[ i ].getAABB() );
+		//calcul AABB noeud
+		for (unsigned int i = p_firstTriangleId; i < p_lastTriangleId; i++) {
+			p_node->_aabb.extend( (*_triangles)[ i ].getSommet( 0 ));
+			p_node->_aabb.extend( ( *_triangles )[ i ].getSommet( 1 ) );
+			p_node->_aabb.extend( ( *_triangles )[ i ].getSommet( 2 ) );
 		}
-		//arret de la récursion
-		if (p_lastTriangleId - p_firstTriangleId <= _maxTrianglesPerLeaf || p_depth >= _maxDepth) {
-			p_node->_firstTriangleId = p_firstTriangleId;
-			p_node->_lastTriangleId	 = p_lastTriangleId;
-			return;
-		}
-		if (!(p_lastTriangleId - p_firstTriangleId <= _maxTrianglesPerLeaf || p_depth >= _maxDepth)) {
-			//on récupère le plus grand axe
-			int axe_partition = p_node->_aabb.largestAxis();
-			//on récupère milieu de axe_partition
-			float milieu		= p_node->_aabb.centroid()[axe_partition];
-			//int idPartition = 
-		}
+
+		//condition d'arret
+		if ( p_lastTriangleId - p_firstTriangleId <= _maxTrianglesPerLeaf || p_depth >= _maxDepth ) { return; }
+
+		AABB nodeAabb;
+		p_node->_aabb = nodeAabb;
+		//axe partition
+
+
 	}
 
 	bool BVH::_intersectRec( const BVHNode * p_node,
@@ -65,15 +62,83 @@ namespace RT_ISICG
 							 const float	 p_tMax,
 							 HitRecord &	 p_hitRecord ) const
 	{
-		/// TODO
-		return false;
+
+		if ( !p_node->_aabb.intersect( p_ray, p_tMin, p_tMax ) ) { return false; }
+		// on est dans une feuille et on va regarder si nous vaons une intersections avec les triangles
+		if ( p_node->isLeaf() )
+		{
+			for ( unsigned int i = p_node->_firstTriangleId; i < p_node->_lastTriangleId; i++ )
+			{
+				float _t;
+				float _u;
+				float _v;
+				if ( ( *_triangles )[ i ].intersect( p_ray, _t, _u, _v ) ) { 
+					p_hitRecord._point = p_ray.pointAtT( _t );
+					p_hitRecord._distance = _t;
+					p_hitRecord._normal	  = ( *_triangles )[ i ].getNormal( _u, _v );
+					p_hitRecord.faceNormal( p_ray.getDirection() );
+					//p_hitRecord._object = this;
+					return true; 
+				}
+			}
+			return false;
+		}
+		// si nous avons un enfant droit
+		if ( p_node->_right != NULL )
+		{
+			if ( _intersectAnyRec( p_node->_right, p_ray, p_tMin, p_tMax ) ) { return true; }
+		}
+		// si nous avons un enfant gauche
+		if ( p_node->_left != NULL )
+		{
+			if ( _intersectAnyRec( p_node->_left, p_ray, p_tMin, p_tMax ) ) { return true; }
+		}
+		else {
+			return false;
+		}
+		
 	}
 	bool BVH::_intersectAnyRec( const BVHNode * p_node,
 								const Ray &		p_ray,
 								const float		p_tMin,
 								const float		p_tMax ) const
 	{
-		/// TODO
-		return false;
+		// pas d'intersection entre rayon et boite
+		if (!p_node->_aabb.intersect(p_ray, p_tMin, p_tMax)) 
+		{
+			return false;
+		}
+
+		// on est dans une feuille et on va regarder si nous vaons une intersections avec les triangles
+		if (p_node->isLeaf()) { 
+			for (unsigned int i = p_node->_firstTriangleId; i < p_node->_lastTriangleId; i++) {
+				float _t;
+				float _u;
+				float _v;
+				if ((*_triangles)[i].intersect(p_ray, _t, _u, _v)) {
+					return true;
+				}
+			}
+			return false;
+
+		}
+		//si nous avons un enfant droit
+		if (p_node->_right != NULL) { 
+			if (_intersectAnyRec(p_node->_right,p_ray,p_tMin,p_tMax)){
+				return true;
+			}
+		}
+		//si nous avons un enfant gauche
+		if ( p_node->_left != NULL )
+		{
+			if ( _intersectAnyRec( p_node->_left, p_ray, p_tMin, p_tMax ) ) {
+				return true; 
+			}
+		}
+		//pas d'intersection
+		else { 
+			return false;
+		}
+		
 	}
 } // namespace RT_ISICG

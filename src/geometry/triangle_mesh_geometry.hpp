@@ -25,6 +25,8 @@ namespace RT_ISICG
 		Vec3f &		 getNormal( const float & u, const float & v ) const;
 		inline const AABB &	 getAABB() const { return _aabb; }
 
+		const Vec3f  & getSommet( const unsigned int id_v ) const;
+
 	  private:
 		MeshTriangle * _refMesh;
 		union
@@ -33,6 +35,7 @@ namespace RT_ISICG
 			{
 				unsigned int _v0, _v1, _v2;
 			};
+			//indice sommet
 			unsigned int _v[ 3 ] = { 0, 0, 0 };
 		};
 

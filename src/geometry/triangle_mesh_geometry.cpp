@@ -20,6 +20,10 @@ namespace RT_ISICG
 		return n;
 	}
 
+	const Vec3f & TriangleMeshGeometry::getSommet(const unsigned int id_V) const { 
+		return _refMesh->_vertices[ _v[ id_V ]];
+	}
+
 	bool TriangleMeshGeometry::intersect( const Ray & p_ray, float & p_t, float & p_u,float & p_v) const
 	{
 		const Vec3f & o	 = p_ray.getOrigin();
