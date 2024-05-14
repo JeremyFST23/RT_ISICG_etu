@@ -30,6 +30,8 @@ namespace RT_ISICG
 			
 		}
 
+		virtual float  getSDF( const Vec3f & p_point )const override { return _sdf( p_point ); }
+
 	  private:
 		const Vec3f _center;
 		const Vec3f _b;

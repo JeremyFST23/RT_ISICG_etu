@@ -11,8 +11,8 @@ namespace RT_ISICG
 		CSG()					 = delete;
 		virtual ~CSG() = default;
 
-		CSG( const std::string & p_name,const int & p_id, const float & p_sdf_obj1,const float & p_sdf_obj2 )
-			: ImplicitSurface( p_name ), _id( p_id ), _sdf_obj1( p_sdf_obj1 ), _sdf_obj2(p_sdf_obj2)
+		CSG( const std::string & p_name,const int & p_id, ImplicitSurface * p_s1,ImplicitSurface *p_s2)
+			: ImplicitSurface( p_name ), _id( p_id ), _s1( p_s1 ), _s2(p_s2)
 		{
 		}
 
@@ -26,29 +26,33 @@ namespace RT_ISICG
 		  {
 			  if (_id == 1) { 
 				  // UNION 
-				  return glm::min( _sdf_obj1, _sdf_obj2 );
+				  return glm::min( _s1->getSDF( p_point ), _s2->getSDF(p_point ));
 			  }
 			  if (_id == 2) { 
 				  // INTERSECTION 
-				  return glm::max( _sdf_obj1, _sdf_obj2 );
+				  return glm::max( _s1->getSDF( p_point ), _s2->getSDF( p_point ) );
 			  }
 			  if (_id == 3) { 
 				  // SOUSTRACTION 
-				  return glm::max( -_sdf_obj1, _sdf_obj2 );
+				  return glm::max( -_s1->getSDF( p_point ), _s2->getSDF( p_point ) );
 			  }
 			  if ( _id == 4 ) { 
 				  // XOR 
-				  return glm::max( glm::min( _sdf_obj1, _sdf_obj2 ), -glm::max( _sdf_obj1, _sdf_obj2 ) );
+				  return glm::max( glm::min( _s1->getSDF( p_point ), _s2->getSDF( p_point ) ),
+								   -glm::max( _s1->getSDF( p_point ), _s2->getSDF(p_point ) ));
 			  }
 			  else {
 				  return 0;
 			  }  
 		  }
 
+		  virtual float getSDF( const Vec3f & p_point ) const override { return _sdf( p_point ); }
+
 	  private:
 		const int	  _id;
-		const float _sdf_obj1;
-		const float _sdf_obj2;
+		ImplicitSurface * _s1;
+		ImplicitSurface * _s2;
+
 	};
 
 } // namespace RT_ISICG

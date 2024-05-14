@@ -32,6 +32,8 @@ namespace RT_ISICG
 			return glm::sqrt( glm::dot( point, point ) + _ra * _ra - (2.f * _ra * k) ) - _rb;
 		}
 
+		virtual float getSDF( const Vec3f & p_point )const override { return _sdf( p_point ); }
+
 	  private:
 		const Vec3f _center;
 		const Vec2f _sc;

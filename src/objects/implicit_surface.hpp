@@ -22,9 +22,13 @@ namespace RT_ISICG
 		// Check for any intersection between p_tMin and p_tMax.
 		virtual bool intersectAny( const Ray & p_ray, const float p_tMin, const float p_tMax ) const override;
 
+		virtual float getSDF( const Vec3f & p_point ) const = 0;
+
 	  private:
 		// Signed Distance Function
 		virtual float _sdf( const Vec3f & p_point ) const = 0;
+
+		
 
 		// Evaluate normal by computing gradient at 'p_point'
 		virtual Vec3f _evaluateNormal( const Vec3f & p_point ) const

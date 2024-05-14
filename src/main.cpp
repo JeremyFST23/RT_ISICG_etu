@@ -50,7 +50,11 @@ namespace RT_ISICG
 		//Vec3f p_lookat	 = Vec3f( 1.f, 1.f, 1.f );
 
 		//Tp7 round cone
-		Vec3f p_position = Vec3f( 5.f, 3.f, 2.f );
+		//Vec3f p_position = Vec3f( 0.f, 2.f, -4.f );
+		//Vec3f p_lookat	 = Vec3f( 1.f, 1.f, 1.f );
+
+		//Projet
+		Vec3f p_position = Vec3f( 0.f, 2.f, -6.f );
 		Vec3f p_lookat	 = Vec3f( 1.f, 1.f, 1.f );
 
 		Vec3f p_up		 = Vec3f( 0, 1, 0 );

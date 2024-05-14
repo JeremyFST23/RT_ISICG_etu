@@ -253,6 +253,7 @@ namespace RT_ISICG
 		_addMaterial( new MatteMaterial( "BlueMatte", BLUE, 0.6f ) );
 		_addMaterial( new MatteMaterial( "GreyMatte", GREY, 0.6f ) );
 		_addMaterial( new MatteMaterial( "MagentaMatte", MAGENTA, 0.6f ) );
+		_addMaterial( new MatteMaterial( "BlackMatte", BLACK, 0.6f ) );
 
 		_addMaterial( new MirrorMaterial( "Mirror" ) );
 		_addMaterial( new TransparentMaterial( "Transparent" ) );
@@ -262,21 +263,178 @@ namespace RT_ISICG
 		_attachMaterialToObject( "WhiteMatte", "Torus" );
 		_addLight( new SpotLight( Vec3f( 1.f, 1.f, 4.f ), Vec3f( 1.f, 1.f, -1.f ), 45.f, WHITE, 80.f ) );*/
 
-		ImplicitSphere * sphere = new ImplicitSphere( "Sphere", Vec3f( 1.f, 1.f, 1.f ), 2.f );
-		_addObject( sphere );
+		ImplicitSphere * sphere = new ImplicitSphere( "Sphere", Vec3f( -3.5f, -0.5f, 3.f ), 1.f );
+		//_addObject( sphere );
 		//_attachMaterialToObject( "WhiteMatte", "Sphere" );
-		float			   sdf_sphere = sphere->_sdf( Vec3f( 1.f, 1.f, 1.f ) );
-		ImplicitRoundBox * box	  = new ImplicitRoundBox( "Box", Vec3f( 1.f, 1.f, 1.f ), Vec3f( 2.f, 1.f, 2.f ), 0.2f );
-		float			   sdf_box = box->_sdf( Vec3f( 1.f, 1.f, 1.f ) );
-		_addObject( box );
-		//_attachMaterialToObject( "WhiteMatte", "Box" );
+
+		ImplicitRoundBox * box	  = new ImplicitRoundBox( "Box", Vec3f( -3.5f, -1.5f, 3.f ), Vec3f( 1.f, 1.5f, 1.f ), 0.2f );
+
+		ImplicitRoundBox * box2 = new ImplicitRoundBox( "Box2", Vec3f( 3.5f, -1.5f, 3.f ), Vec3f( 1.f, 1.5f, 1.f ), 0.2f );
+		//_addObject( box2 );
+		//_attachMaterialToObject( "WhiteMatte", "Box2" );
+
+
+		ImplicitPrism *prism = new ImplicitPrism( "Prism", Vec3f( 3.5f, 0.4f, 3.f ), Vec2f( 1.f, 1.f ) ) ;
+		//_addObject( prism );
+		//_attachMaterialToObject( "WhiteMatte", "Prism" );
+
+		//ImplicitRoundBox * box = new ImplicitRoundBox( "Box", Vec3f( -3.5f, -1.5f, 3.f ), Vec3f( 1.f, 1.5f, 1.f ), 0.2f );
+
+		//arc de triomphe
+
+		ImplicitRoundBox * box3 = new ImplicitRoundBox( "Box3", Vec3f( 0.f, -1.f, 3.f ), Vec3f( 2.f, 2.f, 1.f ), 0.f );
+		//_addObject( box3 );
+		//_attachMaterialToObject( "WhiteMatte", "Box3" );
+
+		ImplicitRoundBox * box4
+			= new ImplicitRoundBox( "Box4", Vec3f( 0.f, -1.5f, 3.f ), Vec3f( 0.5f, 2.f, 2.f ), 0.5f );
+		//_addObject( box3 );
+		//_attachMaterialToObject( "WhiteMatte", "Box3" );
+
+		ImplicitRoundBox * box5
+			= new ImplicitRoundBox( "Box5", Vec3f( 0.f, -2.f, 3.f ), Vec3f( 3.f, 1.2f, 0.5f ), 0.5f );
+
+		ImplicitRoundBox * box6 = new ImplicitRoundBox( "Box6", Vec3f( 0.f, 0.9f, 3.f ), Vec3f( 2.2f, 0.1f, 1.2f ), 0.1f );
+
+		ImplicitRoundBox * box7
+			= new ImplicitRoundBox( "Box7", Vec3f( 0.f, 1.2f, 3.f ), Vec3f( 1.8f, 0.3f, 0.8f ), 0.1f );
+
+		ImplicitRoundBox * box8
+			= new ImplicitRoundBox( "Box8", Vec3f( 0.f, 1.5f, 3.f ), Vec3f( 1.9f, 0.05f, 0.8f ), 0.1f );
+
+		//pilier droit
+
+		ImplicitRoundBox * box9
+			= new ImplicitRoundBox( "Box9", Vec3f( -1.4f, -2.1f, 2.1f ), Vec3f( 0.3f, 1.f, 0.3f ), 0.f );
+
+		ImplicitRoundBox * box10
+			= new ImplicitRoundBox( "Box10", Vec3f( -1.4f, -1.7f, 2.1f ), Vec3f( 0.2f, 0.9f, 0.3f ), 0.f );
+
+		ImplicitRoundBox * box11
+			= new ImplicitRoundBox( "Box11", Vec3f( -1.4f, -1.f, 2.f ), Vec3f( 0.6f, 1.9f, 0.1f ), 0.f );
+
+		ImplicitRoundBox * box12
+			= new ImplicitRoundBox( "Box12", Vec3f( -1.4f, 0.f, 3.f ), Vec3f( 0.7f, 0.02f, 1.2f ), 0.f );
+
+		ImplicitRoundBox * box13
+			= new ImplicitRoundBox( "Box13", Vec3f( -0.6f, 0.f, 3.f ), Vec3f( 0.2f, 0.02f, 1.1f ), 0.f );
+		// pilier droit
+
+		//pilier gauche
 		
-		CSG * csg = new CSG( "Csg", 1, sdf_box, sdf_sphere );
-		_addObject( csg );
-		_attachMaterialToObject( "WhiteMatte", "Csg" );
-		_addLight( new PointLight( Vec3f( 1.f, 1.f, -3.f ), WHITE, 100.f ) );
+		ImplicitRoundBox * box14
+			= new ImplicitRoundBox( "Box14", Vec3f( 1.4f, -2.1f, 2.1f ), Vec3f( 0.3f, 1.f, 0.3f ), 0.f );
+
+		ImplicitRoundBox * box15
+			= new ImplicitRoundBox( "Box15", Vec3f( 1.4f, -1.7f, 2.1f ), Vec3f( 0.2f, 0.9f, 0.3f ), 0.f );
+
+		ImplicitRoundBox * box16
+			= new ImplicitRoundBox( "Box16", Vec3f( 1.4f, -1.f, 2.f ), Vec3f( 0.6f, 1.9f, 0.1f ), 0.f );
+
+		ImplicitRoundBox * box17
+			= new ImplicitRoundBox( "Box17", Vec3f( 1.4f, 0.f, 3.f ), Vec3f( 0.7f, 0.02f, 1.2f ), 0.f );
+
+		ImplicitRoundBox * box18
+			= new ImplicitRoundBox( "Box18", Vec3f( 0.6f, 0.f, 3.f ), Vec3f( 0.2f, 0.02f, 1.1f ), 0.f );
+		// pilier gauche
 
 
+
+		// arc de triomphe
+
+		CSG * csg = new CSG( "Csg", 1, box, sphere );
+		//_addObject( csg );
+		//_attachMaterialToObject( "WhiteMatte", "Csg" );
+
+		CSG * csg2 = new CSG( "Csg2", 1, box2, prism );
+		//_addObject( csg2 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg2" );
+
+		//arc de triomphe
+
+		CSG * csg3 = new CSG( "Csg3", 3, box4, box3 );
+		//_addObject( csg3 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg3" );
+
+		CSG * csg4 = new CSG( "Csg4", 3, box5, csg3 );
+		//_addObject( csg4 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg4" );
+
+		CSG * csg5 = new CSG( "Csg5", 1, box6, csg4 );
+		//_addObject( csg5 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg5" );
+
+		CSG * csg6 = new CSG( "Csg6", 1, box7, csg5 );
+		//_addObject( csg6 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg6" );
+
+		CSG * csg7 = new CSG( "Csg7", 1, box8, csg6 );
+		//_addObject( csg7 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg7" );
+
+		CSG * csg8 = new CSG( "Csg8", 1, box9, box10 );
+		//_addObject( csg8 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg8" );
+
+
+		CSG * csg9 = new CSG( "Csg9", 1, csg7, box11 );
+		//_addObject( csg9 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg9" );
+
+		CSG * csg10 = new CSG( "Csg10", 1, csg8, csg9 );
+		//_addObject( csg10 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg10" );
+
+		CSG * csg11 = new CSG( "Csg11", 1, csg10, box12 );
+		//_addObject( csg11 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg11" );
+
+		CSG * csg12 = new CSG( "Csg12", 1, box13, csg11 );
+		//_addObject( csg12 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg12" );
+
+		CSG * csg13 = new CSG( "Csg13", 1, box14, box15 );
+		//_addObject( csg13 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg13" );
+
+		CSG * csg14 = new CSG( "Csg14", 1, csg12, csg13 );
+		//_addObject( csg14 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg14" );
+
+		CSG * csg15 = new CSG( "Csg15", 1, box16, csg14 );
+		//_addObject( csg15 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg15" );
+
+		CSG * csg16 = new CSG( "Csg16", 1, box17, csg15 );
+		//_addObject( csg16 );
+		//_attachMaterialToObject( "WhiteMatte", "Csg16" );
+
+		CSG * csg17 = new CSG( "Csg16", 1, box18, csg16 );
+		_addObject( csg17 );
+		_attachMaterialToObject( "WhiteMatte", "Csg17" );
+
+		// arc de triomphe
+
+
+
+
+		
+		_addObject( new Plane( "PlaneGround", Vec3f( 0.f, -3.f, 0.f ), Vec3f( 0.f, 1.f, 0.f ) ) );
+		_attachMaterialToObject( "GreyMatte", "PlaneGround" );
+		_addObject( new Plane( "PlaneLeft", Vec3f( 5.f, 0.f, 0.f ), Vec3f( -1.f, 0.f, 0.f ) ) );
+		_attachMaterialToObject( "RedMatte", "PlaneLeft" );
+		_addObject( new Plane( "PlaneCeiling", Vec3f( 0.f, 7.f, 0.f ), Vec3f( 0.f, -1.f, 0.f ) ) );
+		_attachMaterialToObject( "GreenMatte", "PlaneCeiling" );
+		_addObject( new Plane( "PlaneRight", Vec3f( -5.f, 0.f, 0.f ), Vec3f( 1.f, 0.f, 0.f ) ) );
+		_attachMaterialToObject( "BlueMatte", "PlaneRight" );
+		_addObject( new Plane( "PlaneFront", Vec3f( 0.f, 0.f, 10.f ), Vec3f( 0.f, 0.f, -1.f ) ) );
+		_attachMaterialToObject( "Mirror", "PlaneFront" );
+
+
+
+		//_addLight( new PointLight( Vec3f( -1.f, 5.f, 0.f ), WHITE, 100.f ) );
+		//_addLight( new SpotLight( Vec3f( 4.f, 3.f, 0.f ), Vec3f( 0.f, 1.f, 1.f ), 60.f, WHITE, 80.f ) );
+		_addLight( new PointLight( Vec3f( -1.f, 2.f, -10.f ), WHITE, 100.f ) );
 
 		
 	}

@@ -26,6 +26,8 @@ namespace RT_ISICG
 			return glm::max( q.z - _h.y, glm::max( q.x * 0.866025f + point.y * 0.5f, -point.y ) - _h.x * 0.5f );
 		}
 
+		virtual float getSDF( const Vec3f & p_point )const override { return _sdf( p_point ); }
+
 	  private:
 		const Vec3f _center;
 		const Vec2f _h;
