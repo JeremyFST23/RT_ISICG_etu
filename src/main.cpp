@@ -6,8 +6,8 @@ namespace RT_ISICG
 {
 	int main( int argc, char ** argv )
 	{
-		const int imgWidth	= 600;
-		const int imgHeight = 400;
+		const int imgWidth	= 1920;
+		const int imgHeight = 1080;
 		//Tp1 Une caméra positionnable a)
 		/* Vec3f p_position = Vec3f(0.f,0.f,-2.f);
 		Vec3f p_lookat = Vec3f(0.f,0.f,79.f);
@@ -54,8 +54,9 @@ namespace RT_ISICG
 		//Vec3f p_lookat	 = Vec3f( 1.f, 1.f, 1.f );
 
 		//Projet
-		Vec3f p_position = Vec3f( 0.f, 2.f, -6.f );
-		Vec3f p_lookat	 = Vec3f( 1.f, 1.f, 1.f );
+		Vec3f p_position = Vec3f( 0.f, 1.f, -5.f );
+		Vec3f p_lookat	 = Vec3f( 0.5f, 0.f, 3.f );
+		//Vec3f p_lookat	 = Vec3f( 1.f, 1.f, 1.f );
 
 		Vec3f p_up		 = Vec3f( 0, 1, 0 );
 		float fov		 = 60.f;

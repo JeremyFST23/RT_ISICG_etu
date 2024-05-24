@@ -236,9 +236,24 @@ namespace RT_ISICG
 		_attachMaterialToObject( "WhiteMatte", "Prism" );
 		_addLight( new PointLight( Vec3f(3.f, 1.f, -5.f ), WHITE, 100.f ) );*/
 
-		_addObject( new ImplicitCapedTorus( "Torus", Vec3f( 1.f, 1.f, 1.f ), Vec2f( sin(2.5), cos(2.5) ), 0.6f, 0.2f ) );
-		_attachMaterialToObject( "WhiteMatte", "Torus" );
-		_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
+		//_addObject( new ImplicitCapedTorus( "Torus", Vec3f( 1.f, 1.f, 1.f ), Vec2f( sin(2.5), cos(2.5) ), 0.6f, 0.2f ) );
+		//_attachMaterialToObject( "WhiteMatte", "Torus" );
+
+		ImplicitSphere * sphere = new ImplicitSphere( "Sphere", Vec3f( -3.5f, -0.5f, 3.f ), 1.f );
+		//_addObject( sphere );
+		//_attachMaterialToObject( "WhiteMatte", "Sphere" );
+
+		ImplicitRoundBox * box
+			= new ImplicitRoundBox( "Box", Vec3f( -3.5f, -1.5f, 3.f ), Vec3f( 1.f, 1.f, 1.f ), 0.2f );
+
+		CSG * csg = new CSG( "Csg", 4, sphere, box );
+		_addObject( csg );
+		_attachMaterialToObject( "WhiteMatte", "Csg" );
+
+		//_addLight( new PointLight( Vec3f( -1.f, 5.f, 0.f ), WHITE, 100.f ) );
+		_addLight( new SpotLight( Vec3f( -3.f, -4.f, 3.f ), Vec3f( 0.f, 1.f, 0.f ), 20.f, WHITE, 80.f ) );
+
+		//_addLight( new PointLight( Vec3f( 1.f, 1.f, -4.f ), WHITE, 100.f ) );
 		
 		
 		
@@ -409,7 +424,7 @@ namespace RT_ISICG
 		//_addObject( csg16 );
 		//_attachMaterialToObject( "WhiteMatte", "Csg16" );
 
-		CSG * csg17 = new CSG( "Csg16", 1, box18, csg16 );
+		CSG * csg17 = new CSG( "Csg17", 1, box18, csg16 );
 		_addObject( csg17 );
 		_attachMaterialToObject( "WhiteMatte", "Csg17" );
 
@@ -422,19 +437,21 @@ namespace RT_ISICG
 		_addObject( new Plane( "PlaneGround", Vec3f( 0.f, -3.f, 0.f ), Vec3f( 0.f, 1.f, 0.f ) ) );
 		_attachMaterialToObject( "GreyMatte", "PlaneGround" );
 		_addObject( new Plane( "PlaneLeft", Vec3f( 5.f, 0.f, 0.f ), Vec3f( -1.f, 0.f, 0.f ) ) );
-		_attachMaterialToObject( "RedMatte", "PlaneLeft" );
+		_attachMaterialToObject( "BlueMatte", "PlaneLeft" );
 		_addObject( new Plane( "PlaneCeiling", Vec3f( 0.f, 7.f, 0.f ), Vec3f( 0.f, -1.f, 0.f ) ) );
-		_attachMaterialToObject( "GreenMatte", "PlaneCeiling" );
+		_attachMaterialToObject( "WhiteMatte", "PlaneCeiling" );
 		_addObject( new Plane( "PlaneRight", Vec3f( -5.f, 0.f, 0.f ), Vec3f( 1.f, 0.f, 0.f ) ) );
-		_attachMaterialToObject( "BlueMatte", "PlaneRight" );
+		_attachMaterialToObject( "RedMatte", "PlaneRight" );
 		_addObject( new Plane( "PlaneFront", Vec3f( 0.f, 0.f, 10.f ), Vec3f( 0.f, 0.f, -1.f ) ) );
 		_attachMaterialToObject( "Mirror", "PlaneFront" );
 
 
 
-		//_addLight( new PointLight( Vec3f( -1.f, 5.f, 0.f ), WHITE, 100.f ) );
+		//_addLight( new PointLight( Vec3f( -1.f, 5.f, 1.f ), WHITE, 100.f ) );
+		_addLight(new QuadLight( Vec3f( -2.f, 5.f, 0.f ), Vec3f( -1.f, 0.f, 0.f ), Vec3f( 0.f, 1.f, 1.f ), WHITE, 100.f ) );
+		//_addLight(new QuadLight( Vec3f( 2.f, 4.f, -1.f ), Vec3f( -2.f, 0.f, 0.f ), Vec3f( 0.f, 1.f, 2.f ), WHITE, 40.f ) );
 		//_addLight( new SpotLight( Vec3f( 4.f, 3.f, 0.f ), Vec3f( 0.f, 1.f, 1.f ), 60.f, WHITE, 80.f ) );
-		_addLight( new PointLight( Vec3f( -1.f, 2.f, -10.f ), WHITE, 100.f ) );
+		
 
 		
 	}

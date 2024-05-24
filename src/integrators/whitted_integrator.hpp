@@ -35,7 +35,7 @@ namespace RT_ISICG
 							  const bool p_inObject) const;
 
 		int _nbBounces		= 5;
-		int			  _nbLightSamples = 32;
+		int			  _nbLightSamples = 700;
 	};
 } // namespace RT_ISICG
 
