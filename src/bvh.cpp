@@ -16,8 +16,6 @@ namespace RT_ISICG
 		Chrono chr;
 		chr.start();
 
-		//_root = new BVHNode();
-		//_buildRec( _root, 0, p_triangles->size(), 1 );
 
 		chr.stop();
 
@@ -86,12 +84,12 @@ namespace RT_ISICG
 		// si nous avons un enfant droit
 		if ( p_node->_right != NULL )
 		{
-			if ( _intersectAnyRec( p_node->_right, p_ray, p_tMin, p_tMax ) ) { return true; }
+			if ( _intersectRec( p_node->_right, p_ray, p_tMin, p_tMax,p_hitRecord ) ) { return true; }
 		}
 		// si nous avons un enfant gauche
 		if ( p_node->_left != NULL )
 		{
-			if ( _intersectAnyRec( p_node->_left, p_ray, p_tMin, p_tMax ) ) { return true; }
+			if ( _intersectRec( p_node->_left, p_ray, p_tMin, p_tMax,p_hitRecord ) ) { return true; }
 		}
 		else {
 			return false;
@@ -109,7 +107,7 @@ namespace RT_ISICG
 			return false;
 		}
 
-		// on est dans une feuille et on va regarder si nous vaons une intersections avec les triangles
+		// on est dans une feuille et on va regarder si nous avons une intersections avec les triangles
 		if (p_node->isLeaf()) { 
 			for (unsigned int i = p_node->_firstTriangleId; i < p_node->_lastTriangleId; i++) {
 				float _t;
